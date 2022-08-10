@@ -10,55 +10,403 @@
  * Do not edit the class manually.
  */
 
-package io.swagger.client.toRefactor;
+package io.swagger.client.model;
 
-import java.util.Objects;
+import com.google.gson.Gson;
+import com.google.gson.TypeAdapter;
+import com.google.gson.annotations.SerializedName;
+import com.google.gson.stream.JsonReader;
+import com.google.gson.stream.JsonToken;
+import com.google.gson.stream.JsonWriter;
 
-import io.swagger.client.toRefactor.AdvertiseBudgetTotal;
+import io.swagger.client.model.enums.AdvertiseBillingType;
+import io.swagger.client.model.enums.AdvertiseCampaignGoal;
+import io.swagger.v3.oas.annotations.media.Schema;
 
-import java.util.Arrays;
+import java.io.IOException;
+
+import org.threeten.bp.LocalDate;
+import org.threeten.bp.OffsetDateTime;
+
 /**
- * AdvertiseRequestBudgetTotal
+ * OneOfadvertiseCampaign
  */
+public abstract class AnAdvertiseCampaign {
+    @SerializedName("id")
+    protected String id = null;
 
-@javax.annotation.Generated(value = "io.swagger.codegen.v3.generators.java.JavaClientCodegen", date = "2022-08-09T13:51:56.064Z[GMT]")
-public class AdvertiseRequestBudgetTotal extends AdvertiseBudgetTotal {
+    @SerializedName("name")
+    protected String name = null;
 
-  @Override
-  public boolean equals(java.lang.Object o) {
-    if (this == o) {
-      return true;
+    @SerializedName("goal")
+    protected AdvertiseCampaignGoal goal = null;
+
+    @SerializedName("billingType")
+    protected AdvertiseBillingType billingType = null;
+
+    @SerializedName("enabled")
+    protected Boolean enabled = null;
+
+    @SerializedName("attributionClickUrl")
+    protected String attributionClickUrl = null;
+
+    @SerializedName("attributionStartUrl")
+    protected String attributionStartUrl = null;
+
+    @SerializedName("attributionViewUrl")
+    protected String attributionViewUrl = null;
+
+    @SerializedName("scheduleStart")
+    protected LocalDate scheduleStart = null;
+
+    @SerializedName("scheduleEnd")
+    protected LocalDate scheduleEnd = null;
+
+    @SerializedName("createdAt")
+    protected OffsetDateTime createdAt = null;
+
+    @SerializedName("updatedAt")
+    protected OffsetDateTime updatedAt = null;
+
+    /**
+     * Constructor to use for instance creation using inline methods
+     */
+    public AnAdvertiseCampaign() {
     }
-    if (o == null || getClass() != o.getClass()) {
-      return false;
+
+    public AnAdvertiseCampaign(String id, String name, AdvertiseCampaignGoal goal, AdvertiseBillingType billingType,
+            Boolean enabled, String attributionClickUrl, String attributionStartUrl, String attributionViewUrl,
+            LocalDate scheduleStart, LocalDate scheduleEnd, OffsetDateTime createdAt, OffsetDateTime updatedAt) {
+        this.id = id;
+        this.name = name;
+        this.goal = goal;
+        this.billingType = billingType;
+        this.enabled = enabled;
+        this.attributionClickUrl = attributionClickUrl;
+        this.attributionStartUrl = attributionStartUrl;
+        this.attributionViewUrl = attributionViewUrl;
+        this.scheduleStart = scheduleStart;
+        this.scheduleEnd = scheduleEnd;
+        this.createdAt = createdAt;
+        this.updatedAt = updatedAt;
     }
-    return super.equals(o);
-  }
 
-  @Override
-  public int hashCode() {
-    return Objects.hash(super.hashCode());
-  }
-
-
-  @Override
-  public String toString() {
-    StringBuilder sb = new StringBuilder();
-    sb.append("class AdvertiseRequestBudgetTotal {\n");
-    sb.append("    ").append(toIndentedString(super.toString())).append("\n");
-    sb.append("}");
-    return sb.toString();
-  }
-
-  /**
-   * Convert the given object to string with each line indented by 4 spaces
-   * (except the first line).
-   */
-  private String toIndentedString(java.lang.Object o) {
-    if (o == null) {
-      return "null";
+    public AnAdvertiseCampaign id(String id) {
+        this.id = id;
+        return this;
     }
-    return o.toString().replace("\n", "\n    ");
-  }
 
+    /**
+     * Get id
+     * 
+     * @return id
+     **/
+    @Schema(required = true, description = "")
+    public String getId() {
+        return id;
+    }
+
+    public void setId(String id) {
+        this.id = id;
+    }
+
+    public AnAdvertiseCampaign name(String name) {
+        this.name = name;
+        return this;
+    }
+
+    /**
+     * Get name
+     * 
+     * @return name
+     **/
+    @Schema(description = "")
+    public String getName() {
+        return name;
+    }
+
+    public void setName(String name) {
+        this.name = name;
+    }
+
+    public AnAdvertiseCampaign goal(AdvertiseCampaignGoal goal) {
+        this.goal = goal;
+        return this;
+    }
+
+    /**
+     * Get goal
+     * 
+     * @return goal
+     **/
+    @Schema(required = true, description = "")
+    public AdvertiseCampaignGoal getGoal() {
+        return goal;
+    }
+
+    public void setGoal(AdvertiseCampaignGoal goal) {
+        this.goal = goal;
+    }
+
+    public AnAdvertiseCampaign billingType(AdvertiseBillingType billingType) {
+        this.billingType = billingType;
+        return this;
+    }
+
+    /**
+     * Get billingType
+     * 
+     * @return billingType
+     **/
+    @Schema(required = true, description = "")
+    public AdvertiseBillingType getBillingType() {
+        return billingType;
+    }
+
+    public void setBillingType(AdvertiseBillingType billingType) {
+        this.billingType = billingType;
+    }
+
+    public AnAdvertiseCampaign enabled(Boolean enabled) {
+        this.enabled = enabled;
+        return this;
+    }
+
+    /**
+     * Get enabled
+     * 
+     * @return enabled
+     **/
+    @Schema(required = true, description = "")
+    public Boolean getEnabled() {
+        return enabled;
+    }
+
+    public void setEnabled(Boolean enabled) {
+        this.enabled = enabled;
+    }
+
+    public AnAdvertiseCampaign attributionClickUrl(String attributionClickUrl) {
+        this.attributionClickUrl = attributionClickUrl;
+        return this;
+    }
+
+    /**
+     * Get attributionClickUrl
+     * 
+     * @return attributionClickUrl
+     **/
+    @Schema(required = true, description = "")
+    public String getAttributionClickUrl() {
+        return attributionClickUrl;
+    }
+
+    public void setAttributionClickUrl(String attributionClickUrl) {
+        this.attributionClickUrl = attributionClickUrl;
+    }
+
+    public AnAdvertiseCampaign attributionStartUrl(String attributionStartUrl) {
+        this.attributionStartUrl = attributionStartUrl;
+        return this;
+    }
+
+    /**
+     * Get attributionStartUrl
+     * 
+     * @return attributionStartUrl
+     **/
+    @Schema(required = true, description = "")
+    public String getAttributionStartUrl() {
+        return attributionStartUrl;
+    }
+
+    public void setAttributionStartUrl(String attributionStartUrl) {
+        this.attributionStartUrl = attributionStartUrl;
+    }
+
+    public AnAdvertiseCampaign attributionViewUrl(String attributionViewUrl) {
+        this.attributionViewUrl = attributionViewUrl;
+        return this;
+    }
+
+    /**
+     * Get attributionViewUrl
+     * 
+     * @return attributionViewUrl
+     **/
+    @Schema(required = true, description = "")
+    public String getAttributionViewUrl() {
+        return attributionViewUrl;
+    }
+
+    public void setAttributionViewUrl(String attributionViewUrl) {
+        this.attributionViewUrl = attributionViewUrl;
+    }
+
+    public AnAdvertiseCampaign scheduleStart(LocalDate scheduleStart) {
+        this.scheduleStart = scheduleStart;
+        return this;
+    }
+
+    /**
+     * Get scheduleStart
+     * 
+     * @return scheduleStart
+     **/
+    @Schema(required = true, description = "")
+    public LocalDate getScheduleStart() {
+        return scheduleStart;
+    }
+
+    public void setScheduleStart(LocalDate scheduleStart) {
+        this.scheduleStart = scheduleStart;
+    }
+
+    public AnAdvertiseCampaign scheduleEnd(LocalDate scheduleEnd) {
+        this.scheduleEnd = scheduleEnd;
+        return this;
+    }
+
+    /**
+     * Get scheduleEnd
+     * 
+     * @return scheduleEnd
+     **/
+    @Schema(required = true, description = "")
+    public LocalDate getScheduleEnd() {
+        return scheduleEnd;
+    }
+
+    public void setScheduleEnd(LocalDate scheduleEnd) {
+        this.scheduleEnd = scheduleEnd;
+    }
+
+    public AnAdvertiseCampaign createdAt(OffsetDateTime createdAt) {
+        this.createdAt = createdAt;
+        return this;
+    }
+
+    /**
+     * Get createdAt
+     * 
+     * @return createdAt
+     **/
+    @Schema(required = true, description = "")
+    public OffsetDateTime getCreatedAt() {
+        return createdAt;
+    }
+
+    public void setCreatedAt(OffsetDateTime createdAt) {
+        this.createdAt = createdAt;
+    }
+
+    public AnAdvertiseCampaign updatedAt(OffsetDateTime updatedAt) {
+        this.updatedAt = updatedAt;
+        return this;
+    }
+
+    /**
+     * Get updatedAt
+     * 
+     * @return updatedAt
+     **/
+    @Schema(required = true, description = "")
+    public OffsetDateTime getUpdatedAt() {
+        return updatedAt;
+    }
+
+    public void setUpdatedAt(OffsetDateTime updatedAt) {
+        this.updatedAt = updatedAt;
+    }
+
+    /**
+     * Convert the given object to string with each line indented by 4 spaces
+     * (except the first line).
+     */
+    protected String toIndentedString(java.lang.Object o) {
+        if (o == null) {
+            return "null";
+        }
+        return o.toString().replace("\n", "\n    ");
+    }
+
+    public static class Adapter extends TypeAdapter<AnAdvertiseCampaign> {
+        @Override
+        public void write(final JsonWriter jsonWriter, final AnAdvertiseCampaign campaign) throws IOException {
+            // TODO: serialize objects and take care of null insertions
+            jsonWriter.name("id").value(campaign.id);
+            jsonWriter.name("name").value(campaign.name);
+            //jsonWriter.name("goal").value(campaign.goal);
+            //jsonWriter.name("billingType").value(campaign.billingType);
+            jsonWriter.name("enabled").value(campaign.enabled);
+            jsonWriter.name("attributionClickUrl").value(campaign.attributionClickUrl);
+            jsonWriter.name("attributionStartUrl").value(campaign.attributionStartUrl);
+            jsonWriter.name("attributionViewUrl").value(campaign.attributionViewUrl);
+            //jsonWriter.name("scheduleStart").value(campaign.scheduleStart);
+            //jsonWriter.name("scheduleEnd").value(campaign.scheduleEnd);
+            //jsonWriter.name("createdAt").value(campaign.createdAt);
+            //jsonWriter.name("updatedAt").value(campaign.updatedAt);
+        }
+
+        @Override
+        public AnAdvertiseCampaign read(final JsonReader jsonReader) throws IOException {
+            String id = null, name = null;
+            AdvertiseCampaignGoal goal = null;
+            AdvertiseBillingType billingType = null;
+            Boolean enabled = null;
+            String attributionClickUrl = null, attributionStartUrl = null, attributionViewUrl = null;
+            LocalDate scheduleStart = null, scheduleEnd = null;
+            OffsetDateTime createdAt = null, updatedAt = null;
+            AdvertiseRoasTypes roasTypes = null;
+            jsonReader.beginObject();
+            while (jsonReader.hasNext()) {
+                String fieldName = jsonReader.nextName();
+                if (jsonReader.peek() == JsonToken.NULL) {
+                    jsonReader.nextNull();
+                    continue;
+                }
+                if ("id".equals(fieldName)) {
+                    id = jsonReader.nextString();
+                } else if ("name".equals(fieldName)) {
+                    name = jsonReader.nextString();
+                } else if ("goal".equals(fieldName)) {
+                    goal = new Gson().fromJson(jsonReader, AdvertiseCampaignGoal.class);
+                } else if ("billingType".equals(fieldName)) {
+                    billingType = new Gson().fromJson(jsonReader, AdvertiseBillingType.class);
+                } else if ("enabled".equals(fieldName)) {
+                    enabled = jsonReader.nextBoolean();
+                } else if ("attributionClickUrl".equals(fieldName)) {
+                    attributionClickUrl = jsonReader.nextString();
+                } else if ("attributionStartUrl".equals(fieldName)) {
+                    attributionStartUrl = jsonReader.nextString();
+                } else if ("attributionViewUrl".equals(fieldName)) {
+                    attributionViewUrl = jsonReader.nextString();
+                } else if ("scheduleStart".equals(fieldName)) {
+                    scheduleStart = LocalDate.parse(jsonReader.nextString());
+                } else if ("scheduleEnd".equals(fieldName)) {
+                    scheduleEnd = LocalDate.parse(jsonReader.nextString());
+                } else if ("createdAt".equals(fieldName)) {
+                    createdAt = OffsetDateTime.parse(jsonReader.nextString());
+                } else if ("updatedAt".equals(fieldName)) {
+                    updatedAt = OffsetDateTime.parse(jsonReader.nextString());
+                } else if ("roasTypes".equals(fieldName)) {
+                    roasTypes = new Gson().fromJson(jsonReader, AdvertiseRoasTypes.class);
+                } else {
+                    jsonReader.skipValue();
+                }
+
+            }
+            jsonReader.endObject();
+            if (roasTypes == null) {
+                return new AdvertiseCpiCampaign(id, name, goal, billingType, enabled, attributionClickUrl,
+                    attributionStartUrl, attributionViewUrl,
+                    scheduleStart, scheduleEnd, createdAt, updatedAt);
+            } else {
+                return new AdvertiseRoasCampaign(id, name, goal, billingType, enabled, attributionClickUrl,
+                attributionStartUrl, attributionViewUrl,
+                scheduleStart, scheduleEnd, createdAt, updatedAt,roasTypes);
+            }
+ 
+        }
+    }
 }

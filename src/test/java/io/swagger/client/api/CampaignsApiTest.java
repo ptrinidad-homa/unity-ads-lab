@@ -14,6 +14,7 @@ package io.swagger.client.api;
 
 import org.junit.Test;
 
+import io.swagger.client.model.AnAdvertiseCampaign;
 import io.swagger.client.toRefactor.AdvertiseAssignCreativePackRequestBody;
 import io.swagger.client.toRefactor.AdvertiseAssignedCreativePack;
 import io.swagger.client.toRefactor.AdvertiseAssignedCreativePacksResponseBody;
@@ -27,6 +28,7 @@ import io.swagger.client.toRefactor.AdvertiseUpdateCampaignRequestBody;
 import io.swagger.client.toRefactor.AdvertiseUpdateTargetingResponseBody;
 import io.swagger.client.toRefactor.AdvertiseUpdatedCampaignResponseBody;
 
+import org.junit.Assert;
 import org.junit.Ignore;
 
 
@@ -101,8 +103,8 @@ public class CampaignsApiTest extends SetupApiTests {
     
     @Test
     public void advertiseGetCampaignTest() throws Exception {
-        AdvertiseCampaignResponseBody response = api.advertiseGetCampaign();
-
+        AnAdvertiseCampaign response = api.advertiseGetCampaign(this.organizationId, campaignSetId, "62ea97bd377eee6b8a885b4e");
+        Assert.assertTrue(response != null); 
         // TODO: test validations
     }
     /**
@@ -146,9 +148,9 @@ public class CampaignsApiTest extends SetupApiTests {
     
     @Test
     public void advertiseListCampaignsTest() throws Exception {
-        AdvertiseCampaignsResponseBody response = api.advertiseListCampaigns(super.organizationId, "62ea8db677a830b59f6383cf");
+        AdvertiseCampaignsResponseBody response = api.advertiseListCampaigns(super.organizationId, "62ea8d8b676f22632ad2f799");
         System.out.println(response);
-        // TODO: test validations
+        Assert.assertTrue(response.getTotal() > 0);
     }
     /**
      * Unassign Creative Pack

@@ -14,14 +14,15 @@ package io.swagger.client.api;
 
 import org.junit.Test;
 
+import io.swagger.client.model.AdvertiseBudget;
 import io.swagger.client.toRefactor.AdvertiseAssignedBudgetRequestBody;
 import io.swagger.client.toRefactor.AdvertiseAssignedBudgetResponseBody;
-import io.swagger.client.toRefactor.AdvertiseBudget;
 import io.swagger.client.toRefactor.AdvertiseBudgetsResponseBody;
 import io.swagger.client.toRefactor.AdvertiseCreateBudgetRequestBody;
 import io.swagger.client.toRefactor.AdvertiseUpdateBudgetRequestBody;
 import io.swagger.client.toRefactor.AdvertiseUpdateBudgetsResponseBody;
 
+import org.junit.Assert;
 import org.junit.Ignore;
 
 
@@ -34,8 +35,7 @@ import java.util.Map;
 /**
  * API tests for BudgetsApi
  */
-@Ignore
-public class BudgetsApiTest {
+public class BudgetsApiTest extends SetupApiTests {
 
     private final BudgetsApi api = new BudgetsApi();
 
@@ -47,6 +47,7 @@ public class BudgetsApiTest {
      * @throws Exception
      *          if the Api call fails
      */
+    @Ignore
     @Test
     public void advertiseCreateBudgetTest() throws Exception {
         AdvertiseCreateBudgetRequestBody body = null;
@@ -62,6 +63,7 @@ public class BudgetsApiTest {
      * @throws Exception
      *          if the Api call fails
      */
+    @Ignore
     @Test
     public void advertiseGetAssignedBudgetTest() throws Exception {
         AdvertiseAssignedBudgetResponseBody response = api.advertiseGetAssignedBudget();
@@ -76,6 +78,7 @@ public class BudgetsApiTest {
      * @throws Exception
      *          if the Api call fails
      */
+    @Ignore
     @Test
     public void advertiseGetBudgetTest() throws Exception {
         AdvertiseBudget response = api.advertiseGetBudget();
@@ -90,12 +93,12 @@ public class BudgetsApiTest {
      * @throws Exception
      *          if the Api call fails
      */
+    
     @Test
     public void advertiseListBudgetsTest() throws Exception {
-        AdvertiseBudgetsResponseBody response = api.advertiseListBudgets();
-
-        // TODO: test validations
-    }
+        AdvertiseBudgetsResponseBody response = api.advertiseListBudgets(organizationId, campaignSetId);
+        Assert.assertTrue(response.getTotal() > 0);
+   }
     /**
      * Assign Budget
      *
@@ -104,6 +107,7 @@ public class BudgetsApiTest {
      * @throws Exception
      *          if the Api call fails
      */
+    @Ignore
     @Test
     public void advertiseReplaceAssignedBudgetTest() throws Exception {
         AdvertiseAssignedBudgetRequestBody body = null;
@@ -119,6 +123,7 @@ public class BudgetsApiTest {
      * @throws Exception
      *          if the Api call fails
      */
+    @Ignore
     @Test
     public void advertiseUnassignBudgetTest() throws Exception {
         api.advertiseUnassignBudget();
@@ -133,6 +138,7 @@ public class BudgetsApiTest {
      * @throws Exception
      *          if the Api call fails
      */
+    @Ignore
     @Test
     public void advertiseUpdateBudgetTest() throws Exception {
         AdvertiseUpdateBudgetRequestBody body = null;

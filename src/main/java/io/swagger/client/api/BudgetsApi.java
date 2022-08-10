@@ -20,9 +20,9 @@ import io.swagger.client.Configuration;
 import io.swagger.client.Pair;
 import io.swagger.client.ProgressRequestBody;
 import io.swagger.client.ProgressResponseBody;
+import io.swagger.client.model.AdvertiseBudget;
 import io.swagger.client.toRefactor.AdvertiseAssignedBudgetRequestBody;
 import io.swagger.client.toRefactor.AdvertiseAssignedBudgetResponseBody;
-import io.swagger.client.toRefactor.AdvertiseBudget;
 import io.swagger.client.toRefactor.AdvertiseBudgetsResponseBody;
 import io.swagger.client.toRefactor.AdvertiseCreateBudgetRequestBody;
 import io.swagger.client.toRefactor.AdvertiseUpdateBudgetRequestBody;
@@ -58,15 +58,18 @@ public class BudgetsApi {
 
     /**
      * Build call for advertiseCreateBudget
-     * @param body  (required)
-     * @param progressListener Progress listener
+     * 
+     * @param body                    (required)
+     * @param progressListener        Progress listener
      * @param progressRequestListener Progress request listener
      * @return Call to execute
      * @throws ApiException If fail to serialize the request body object
      */
-    public com.squareup.okhttp.Call advertiseCreateBudgetCall(AdvertiseCreateBudgetRequestBody body, final ProgressResponseBody.ProgressListener progressListener, final ProgressRequestBody.ProgressRequestListener progressRequestListener) throws ApiException {
+    public com.squareup.okhttp.Call advertiseCreateBudgetCall(AdvertiseCreateBudgetRequestBody body,
+            final ProgressResponseBody.ProgressListener progressListener,
+            final ProgressRequestBody.ProgressRequestListener progressRequestListener) throws ApiException {
         Object localVarPostBody = body;
-        
+
         // create path and map variables
         String localVarPath = "/advertise/v1/organizations/{organizationId}/apps/{campaignSetId}/budgets";
 
@@ -78,55 +81,64 @@ public class BudgetsApi {
         Map<String, Object> localVarFormParams = new HashMap<String, Object>();
 
         final String[] localVarAccepts = {
-            "application/json"
+                "application/json"
         };
         final String localVarAccept = apiClient.selectHeaderAccept(localVarAccepts);
-        if (localVarAccept != null) localVarHeaderParams.put("Accept", localVarAccept);
+        if (localVarAccept != null)
+            localVarHeaderParams.put("Accept", localVarAccept);
 
         final String[] localVarContentTypes = {
-            "application/json"
+                "application/json"
         };
         final String localVarContentType = apiClient.selectHeaderContentType(localVarContentTypes);
         localVarHeaderParams.put("Content-Type", localVarContentType);
 
-        if(progressListener != null) {
+        if (progressListener != null) {
             apiClient.getHttpClient().networkInterceptors().add(new com.squareup.okhttp.Interceptor() {
                 @Override
-                public com.squareup.okhttp.Response intercept(com.squareup.okhttp.Interceptor.Chain chain) throws IOException {
+                public com.squareup.okhttp.Response intercept(com.squareup.okhttp.Interceptor.Chain chain)
+                        throws IOException {
                     com.squareup.okhttp.Response originalResponse = chain.proceed(chain.request());
                     return originalResponse.newBuilder()
-                    .body(new ProgressResponseBody(originalResponse.body(), progressListener))
-                    .build();
+                            .body(new ProgressResponseBody(originalResponse.body(), progressListener))
+                            .build();
                 }
             });
         }
 
         String[] localVarAuthNames = new String[] { "Authentication" };
-        return apiClient.buildCall(localVarPath, "POST", localVarQueryParams, localVarCollectionQueryParams, localVarPostBody, localVarHeaderParams, localVarFormParams, localVarAuthNames, progressRequestListener);
+        return apiClient.buildCall(localVarPath, "POST", localVarQueryParams, localVarCollectionQueryParams,
+                localVarPostBody, localVarHeaderParams, localVarFormParams, localVarAuthNames, progressRequestListener);
     }
-    
+
     @SuppressWarnings("rawtypes")
-    private com.squareup.okhttp.Call advertiseCreateBudgetValidateBeforeCall(AdvertiseCreateBudgetRequestBody body, final ProgressResponseBody.ProgressListener progressListener, final ProgressRequestBody.ProgressRequestListener progressRequestListener) throws ApiException {
+    private com.squareup.okhttp.Call advertiseCreateBudgetValidateBeforeCall(AdvertiseCreateBudgetRequestBody body,
+            final ProgressResponseBody.ProgressListener progressListener,
+            final ProgressRequestBody.ProgressRequestListener progressRequestListener) throws ApiException {
         // verify the required parameter 'body' is set
         if (body == null) {
             throw new ApiException("Missing the required parameter 'body' when calling advertiseCreateBudget(Async)");
         }
-        
+
         com.squareup.okhttp.Call call = advertiseCreateBudgetCall(body, progressListener, progressRequestListener);
         return call;
 
-        
-        
-        
-        
     }
 
     /**
      * Create Budget
-     * This endpoint is used to create campaign budget.  &lt;div style&#x3D;\&quot;background-color: #b38629; color: white; padding: 1em; padding-top: 1em; font-size: 1em;\&quot;&gt;   Support for shared budgets will be removed in Fall 2022. If you are sharing budgets between any campaigns, please consider moving to using a single budget per campaign. You can do so by creating a new budget for the campaign. Note that some features may not be available for campaigns using shared budgets. &lt;/div&gt; 
-     * @param body  (required)
+     * This endpoint is used to create campaign budget. &lt;div
+     * style&#x3D;\&quot;background-color: #b38629; color: white; padding: 1em;
+     * padding-top: 1em; font-size: 1em;\&quot;&gt; Support for shared budgets will
+     * be removed in Fall 2022. If you are sharing budgets between any campaigns,
+     * please consider moving to using a single budget per campaign. You can do so
+     * by creating a new budget for the campaign. Note that some features may not be
+     * available for campaigns using shared budgets. &lt;/div&gt;
+     * 
+     * @param body (required)
      * @return AdvertiseBudget
-     * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+     * @throws ApiException If fail to call the API, e.g. server error or cannot
+     *                      deserialize the response body
      */
     public AdvertiseBudget advertiseCreateBudget(AdvertiseCreateBudgetRequestBody body) throws ApiException {
         ApiResponse<AdvertiseBudget> resp = advertiseCreateBudgetWithHttpInfo(body);
@@ -135,26 +147,45 @@ public class BudgetsApi {
 
     /**
      * Create Budget
-     * This endpoint is used to create campaign budget.  &lt;div style&#x3D;\&quot;background-color: #b38629; color: white; padding: 1em; padding-top: 1em; font-size: 1em;\&quot;&gt;   Support for shared budgets will be removed in Fall 2022. If you are sharing budgets between any campaigns, please consider moving to using a single budget per campaign. You can do so by creating a new budget for the campaign. Note that some features may not be available for campaigns using shared budgets. &lt;/div&gt; 
-     * @param body  (required)
+     * This endpoint is used to create campaign budget. &lt;div
+     * style&#x3D;\&quot;background-color: #b38629; color: white; padding: 1em;
+     * padding-top: 1em; font-size: 1em;\&quot;&gt; Support for shared budgets will
+     * be removed in Fall 2022. If you are sharing budgets between any campaigns,
+     * please consider moving to using a single budget per campaign. You can do so
+     * by creating a new budget for the campaign. Note that some features may not be
+     * available for campaigns using shared budgets. &lt;/div&gt;
+     * 
+     * @param body (required)
      * @return ApiResponse&lt;AdvertiseBudget&gt;
-     * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+     * @throws ApiException If fail to call the API, e.g. server error or cannot
+     *                      deserialize the response body
      */
-    public ApiResponse<AdvertiseBudget> advertiseCreateBudgetWithHttpInfo(AdvertiseCreateBudgetRequestBody body) throws ApiException {
+    public ApiResponse<AdvertiseBudget> advertiseCreateBudgetWithHttpInfo(AdvertiseCreateBudgetRequestBody body)
+            throws ApiException {
         com.squareup.okhttp.Call call = advertiseCreateBudgetValidateBeforeCall(body, null, null);
-        Type localVarReturnType = new TypeToken<AdvertiseBudget>(){}.getType();
+        Type localVarReturnType = new TypeToken<AdvertiseBudget>() {
+        }.getType();
         return apiClient.execute(call, localVarReturnType);
     }
 
     /**
      * Create Budget (asynchronously)
-     * This endpoint is used to create campaign budget.  &lt;div style&#x3D;\&quot;background-color: #b38629; color: white; padding: 1em; padding-top: 1em; font-size: 1em;\&quot;&gt;   Support for shared budgets will be removed in Fall 2022. If you are sharing budgets between any campaigns, please consider moving to using a single budget per campaign. You can do so by creating a new budget for the campaign. Note that some features may not be available for campaigns using shared budgets. &lt;/div&gt; 
-     * @param body  (required)
+     * This endpoint is used to create campaign budget. &lt;div
+     * style&#x3D;\&quot;background-color: #b38629; color: white; padding: 1em;
+     * padding-top: 1em; font-size: 1em;\&quot;&gt; Support for shared budgets will
+     * be removed in Fall 2022. If you are sharing budgets between any campaigns,
+     * please consider moving to using a single budget per campaign. You can do so
+     * by creating a new budget for the campaign. Note that some features may not be
+     * available for campaigns using shared budgets. &lt;/div&gt;
+     * 
+     * @param body     (required)
      * @param callback The callback to be executed when the API call finishes
      * @return The request call
-     * @throws ApiException If fail to process the API call, e.g. serializing the request body object
+     * @throws ApiException If fail to process the API call, e.g. serializing the
+     *                      request body object
      */
-    public com.squareup.okhttp.Call advertiseCreateBudgetAsync(AdvertiseCreateBudgetRequestBody body, final ApiCallback<AdvertiseBudget> callback) throws ApiException {
+    public com.squareup.okhttp.Call advertiseCreateBudgetAsync(AdvertiseCreateBudgetRequestBody body,
+            final ApiCallback<AdvertiseBudget> callback) throws ApiException {
 
         ProgressResponseBody.ProgressListener progressListener = null;
         ProgressRequestBody.ProgressRequestListener progressRequestListener = null;
@@ -175,21 +206,27 @@ public class BudgetsApi {
             };
         }
 
-        com.squareup.okhttp.Call call = advertiseCreateBudgetValidateBeforeCall(body, progressListener, progressRequestListener);
-        Type localVarReturnType = new TypeToken<AdvertiseBudget>(){}.getType();
+        com.squareup.okhttp.Call call = advertiseCreateBudgetValidateBeforeCall(body, progressListener,
+                progressRequestListener);
+        Type localVarReturnType = new TypeToken<AdvertiseBudget>() {
+        }.getType();
         apiClient.executeAsync(call, localVarReturnType, callback);
         return call;
     }
+
     /**
      * Build call for advertiseGetAssignedBudget
-     * @param progressListener Progress listener
+     * 
+     * @param progressListener        Progress listener
      * @param progressRequestListener Progress request listener
      * @return Call to execute
      * @throws ApiException If fail to serialize the request body object
      */
-    public com.squareup.okhttp.Call advertiseGetAssignedBudgetCall(final ProgressResponseBody.ProgressListener progressListener, final ProgressRequestBody.ProgressRequestListener progressRequestListener) throws ApiException {
+    public com.squareup.okhttp.Call advertiseGetAssignedBudgetCall(
+            final ProgressResponseBody.ProgressListener progressListener,
+            final ProgressRequestBody.ProgressRequestListener progressRequestListener) throws ApiException {
         Object localVarPostBody = null;
-        
+
         // create path and map variables
         String localVarPath = "/advertise/v1/organizations/{organizationId}/apps/{campaignSetId}/campaigns/{campaignId}/assigned-budget";
 
@@ -201,50 +238,57 @@ public class BudgetsApi {
         Map<String, Object> localVarFormParams = new HashMap<String, Object>();
 
         final String[] localVarAccepts = {
-            "application/json"
+                "application/json"
         };
         final String localVarAccept = apiClient.selectHeaderAccept(localVarAccepts);
-        if (localVarAccept != null) localVarHeaderParams.put("Accept", localVarAccept);
+        if (localVarAccept != null)
+            localVarHeaderParams.put("Accept", localVarAccept);
 
         final String[] localVarContentTypes = {
-            
+
         };
         final String localVarContentType = apiClient.selectHeaderContentType(localVarContentTypes);
         localVarHeaderParams.put("Content-Type", localVarContentType);
 
-        if(progressListener != null) {
+        if (progressListener != null) {
             apiClient.getHttpClient().networkInterceptors().add(new com.squareup.okhttp.Interceptor() {
                 @Override
-                public com.squareup.okhttp.Response intercept(com.squareup.okhttp.Interceptor.Chain chain) throws IOException {
+                public com.squareup.okhttp.Response intercept(com.squareup.okhttp.Interceptor.Chain chain)
+                        throws IOException {
                     com.squareup.okhttp.Response originalResponse = chain.proceed(chain.request());
                     return originalResponse.newBuilder()
-                    .body(new ProgressResponseBody(originalResponse.body(), progressListener))
-                    .build();
+                            .body(new ProgressResponseBody(originalResponse.body(), progressListener))
+                            .build();
                 }
             });
         }
 
         String[] localVarAuthNames = new String[] { "Authentication" };
-        return apiClient.buildCall(localVarPath, "GET", localVarQueryParams, localVarCollectionQueryParams, localVarPostBody, localVarHeaderParams, localVarFormParams, localVarAuthNames, progressRequestListener);
+        return apiClient.buildCall(localVarPath, "GET", localVarQueryParams, localVarCollectionQueryParams,
+                localVarPostBody, localVarHeaderParams, localVarFormParams, localVarAuthNames, progressRequestListener);
     }
-    
+
     @SuppressWarnings("rawtypes")
-    private com.squareup.okhttp.Call advertiseGetAssignedBudgetValidateBeforeCall(final ProgressResponseBody.ProgressListener progressListener, final ProgressRequestBody.ProgressRequestListener progressRequestListener) throws ApiException {
-        
+    private com.squareup.okhttp.Call advertiseGetAssignedBudgetValidateBeforeCall(
+            final ProgressResponseBody.ProgressListener progressListener,
+            final ProgressRequestBody.ProgressRequestListener progressRequestListener) throws ApiException {
+
         com.squareup.okhttp.Call call = advertiseGetAssignedBudgetCall(progressListener, progressRequestListener);
         return call;
 
-        
-        
-        
-        
     }
 
     /**
      * Get Assigned Budget
-     * This endpoint returns the budget assigned to a given campaign.  **Note**: you can also use the &lt;a href&#x3D;\&quot;#operation/advertise-listBudgets\&quot;&gt;list Budgets&lt;/a&gt; endpoint to check which budgets are currently assigned to which campaigns. 
+     * This endpoint returns the budget assigned to a given campaign. **Note**: you
+     * can also use the &lt;a
+     * href&#x3D;\&quot;#operation/advertise-listBudgets\&quot;&gt;list
+     * Budgets&lt;/a&gt; endpoint to check which budgets are currently assigned to
+     * which campaigns.
+     * 
      * @return AdvertiseAssignedBudgetResponseBody
-     * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+     * @throws ApiException If fail to call the API, e.g. server error or cannot
+     *                      deserialize the response body
      */
     public AdvertiseAssignedBudgetResponseBody advertiseGetAssignedBudget() throws ApiException {
         ApiResponse<AdvertiseAssignedBudgetResponseBody> resp = advertiseGetAssignedBudgetWithHttpInfo();
@@ -253,24 +297,39 @@ public class BudgetsApi {
 
     /**
      * Get Assigned Budget
-     * This endpoint returns the budget assigned to a given campaign.  **Note**: you can also use the &lt;a href&#x3D;\&quot;#operation/advertise-listBudgets\&quot;&gt;list Budgets&lt;/a&gt; endpoint to check which budgets are currently assigned to which campaigns. 
+     * This endpoint returns the budget assigned to a given campaign. **Note**: you
+     * can also use the &lt;a
+     * href&#x3D;\&quot;#operation/advertise-listBudgets\&quot;&gt;list
+     * Budgets&lt;/a&gt; endpoint to check which budgets are currently assigned to
+     * which campaigns.
+     * 
      * @return ApiResponse&lt;AdvertiseAssignedBudgetResponseBody&gt;
-     * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+     * @throws ApiException If fail to call the API, e.g. server error or cannot
+     *                      deserialize the response body
      */
-    public ApiResponse<AdvertiseAssignedBudgetResponseBody> advertiseGetAssignedBudgetWithHttpInfo() throws ApiException {
+    public ApiResponse<AdvertiseAssignedBudgetResponseBody> advertiseGetAssignedBudgetWithHttpInfo()
+            throws ApiException {
         com.squareup.okhttp.Call call = advertiseGetAssignedBudgetValidateBeforeCall(null, null);
-        Type localVarReturnType = new TypeToken<AdvertiseAssignedBudgetResponseBody>(){}.getType();
+        Type localVarReturnType = new TypeToken<AdvertiseAssignedBudgetResponseBody>() {
+        }.getType();
         return apiClient.execute(call, localVarReturnType);
     }
 
     /**
      * Get Assigned Budget (asynchronously)
-     * This endpoint returns the budget assigned to a given campaign.  **Note**: you can also use the &lt;a href&#x3D;\&quot;#operation/advertise-listBudgets\&quot;&gt;list Budgets&lt;/a&gt; endpoint to check which budgets are currently assigned to which campaigns. 
+     * This endpoint returns the budget assigned to a given campaign. **Note**: you
+     * can also use the &lt;a
+     * href&#x3D;\&quot;#operation/advertise-listBudgets\&quot;&gt;list
+     * Budgets&lt;/a&gt; endpoint to check which budgets are currently assigned to
+     * which campaigns.
+     * 
      * @param callback The callback to be executed when the API call finishes
      * @return The request call
-     * @throws ApiException If fail to process the API call, e.g. serializing the request body object
+     * @throws ApiException If fail to process the API call, e.g. serializing the
+     *                      request body object
      */
-    public com.squareup.okhttp.Call advertiseGetAssignedBudgetAsync(final ApiCallback<AdvertiseAssignedBudgetResponseBody> callback) throws ApiException {
+    public com.squareup.okhttp.Call advertiseGetAssignedBudgetAsync(
+            final ApiCallback<AdvertiseAssignedBudgetResponseBody> callback) throws ApiException {
 
         ProgressResponseBody.ProgressListener progressListener = null;
         ProgressRequestBody.ProgressRequestListener progressRequestListener = null;
@@ -291,21 +350,26 @@ public class BudgetsApi {
             };
         }
 
-        com.squareup.okhttp.Call call = advertiseGetAssignedBudgetValidateBeforeCall(progressListener, progressRequestListener);
-        Type localVarReturnType = new TypeToken<AdvertiseAssignedBudgetResponseBody>(){}.getType();
+        com.squareup.okhttp.Call call = advertiseGetAssignedBudgetValidateBeforeCall(progressListener,
+                progressRequestListener);
+        Type localVarReturnType = new TypeToken<AdvertiseAssignedBudgetResponseBody>() {
+        }.getType();
         apiClient.executeAsync(call, localVarReturnType, callback);
         return call;
     }
+
     /**
      * Build call for advertiseGetBudget
-     * @param progressListener Progress listener
+     * 
+     * @param progressListener        Progress listener
      * @param progressRequestListener Progress request listener
      * @return Call to execute
      * @throws ApiException If fail to serialize the request body object
      */
-    public com.squareup.okhttp.Call advertiseGetBudgetCall(final ProgressResponseBody.ProgressListener progressListener, final ProgressRequestBody.ProgressRequestListener progressRequestListener) throws ApiException {
+    public com.squareup.okhttp.Call advertiseGetBudgetCall(final ProgressResponseBody.ProgressListener progressListener,
+            final ProgressRequestBody.ProgressRequestListener progressRequestListener) throws ApiException {
         Object localVarPostBody = null;
-        
+
         // create path and map variables
         String localVarPath = "/advertise/v1/organizations/{organizationId}/apps/{campaignSetId}/budgets/{budgetId}";
 
@@ -317,50 +381,53 @@ public class BudgetsApi {
         Map<String, Object> localVarFormParams = new HashMap<String, Object>();
 
         final String[] localVarAccepts = {
-            "application/json"
+                "application/json"
         };
         final String localVarAccept = apiClient.selectHeaderAccept(localVarAccepts);
-        if (localVarAccept != null) localVarHeaderParams.put("Accept", localVarAccept);
+        if (localVarAccept != null)
+            localVarHeaderParams.put("Accept", localVarAccept);
 
         final String[] localVarContentTypes = {
-            
+
         };
         final String localVarContentType = apiClient.selectHeaderContentType(localVarContentTypes);
         localVarHeaderParams.put("Content-Type", localVarContentType);
 
-        if(progressListener != null) {
+        if (progressListener != null) {
             apiClient.getHttpClient().networkInterceptors().add(new com.squareup.okhttp.Interceptor() {
                 @Override
-                public com.squareup.okhttp.Response intercept(com.squareup.okhttp.Interceptor.Chain chain) throws IOException {
+                public com.squareup.okhttp.Response intercept(com.squareup.okhttp.Interceptor.Chain chain)
+                        throws IOException {
                     com.squareup.okhttp.Response originalResponse = chain.proceed(chain.request());
                     return originalResponse.newBuilder()
-                    .body(new ProgressResponseBody(originalResponse.body(), progressListener))
-                    .build();
+                            .body(new ProgressResponseBody(originalResponse.body(), progressListener))
+                            .build();
                 }
             });
         }
 
         String[] localVarAuthNames = new String[] { "Authentication" };
-        return apiClient.buildCall(localVarPath, "GET", localVarQueryParams, localVarCollectionQueryParams, localVarPostBody, localVarHeaderParams, localVarFormParams, localVarAuthNames, progressRequestListener);
+        return apiClient.buildCall(localVarPath, "GET", localVarQueryParams, localVarCollectionQueryParams,
+                localVarPostBody, localVarHeaderParams, localVarFormParams, localVarAuthNames, progressRequestListener);
     }
-    
+
     @SuppressWarnings("rawtypes")
-    private com.squareup.okhttp.Call advertiseGetBudgetValidateBeforeCall(final ProgressResponseBody.ProgressListener progressListener, final ProgressRequestBody.ProgressRequestListener progressRequestListener) throws ApiException {
-        
+    private com.squareup.okhttp.Call advertiseGetBudgetValidateBeforeCall(
+            final ProgressResponseBody.ProgressListener progressListener,
+            final ProgressRequestBody.ProgressRequestListener progressRequestListener) throws ApiException {
+
         com.squareup.okhttp.Call call = advertiseGetBudgetCall(progressListener, progressRequestListener);
         return call;
 
-        
-        
-        
-        
     }
 
     /**
      * Get Budget
      * This endpoint returns the campaign budget information for a given budget id.
+     * 
      * @return AdvertiseBudget
-     * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+     * @throws ApiException If fail to call the API, e.g. server error or cannot
+     *                      deserialize the response body
      */
     public AdvertiseBudget advertiseGetBudget() throws ApiException {
         ApiResponse<AdvertiseBudget> resp = advertiseGetBudgetWithHttpInfo();
@@ -370,23 +437,29 @@ public class BudgetsApi {
     /**
      * Get Budget
      * This endpoint returns the campaign budget information for a given budget id.
+     * 
      * @return ApiResponse&lt;AdvertiseBudget&gt;
-     * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+     * @throws ApiException If fail to call the API, e.g. server error or cannot
+     *                      deserialize the response body
      */
     public ApiResponse<AdvertiseBudget> advertiseGetBudgetWithHttpInfo() throws ApiException {
         com.squareup.okhttp.Call call = advertiseGetBudgetValidateBeforeCall(null, null);
-        Type localVarReturnType = new TypeToken<AdvertiseBudget>(){}.getType();
+        Type localVarReturnType = new TypeToken<AdvertiseBudget>() {
+        }.getType();
         return apiClient.execute(call, localVarReturnType);
     }
 
     /**
      * Get Budget (asynchronously)
      * This endpoint returns the campaign budget information for a given budget id.
+     * 
      * @param callback The callback to be executed when the API call finishes
      * @return The request call
-     * @throws ApiException If fail to process the API call, e.g. serializing the request body object
+     * @throws ApiException If fail to process the API call, e.g. serializing the
+     *                      request body object
      */
-    public com.squareup.okhttp.Call advertiseGetBudgetAsync(final ApiCallback<AdvertiseBudget> callback) throws ApiException {
+    public com.squareup.okhttp.Call advertiseGetBudgetAsync(final ApiCallback<AdvertiseBudget> callback)
+            throws ApiException {
 
         ProgressResponseBody.ProgressListener progressListener = null;
         ProgressRequestBody.ProgressRequestListener progressRequestListener = null;
@@ -408,22 +481,29 @@ public class BudgetsApi {
         }
 
         com.squareup.okhttp.Call call = advertiseGetBudgetValidateBeforeCall(progressListener, progressRequestListener);
-        Type localVarReturnType = new TypeToken<AdvertiseBudget>(){}.getType();
+        Type localVarReturnType = new TypeToken<AdvertiseBudget>() {
+        }.getType();
         apiClient.executeAsync(call, localVarReturnType, callback);
         return call;
     }
+
     /**
      * Build call for advertiseListBudgets
-     * @param progressListener Progress listener
+     * 
+     * @param progressListener        Progress listener
      * @param progressRequestListener Progress request listener
      * @return Call to execute
      * @throws ApiException If fail to serialize the request body object
      */
-    public com.squareup.okhttp.Call advertiseListBudgetsCall(final ProgressResponseBody.ProgressListener progressListener, final ProgressRequestBody.ProgressRequestListener progressRequestListener) throws ApiException {
+    public com.squareup.okhttp.Call advertiseListBudgetsCall(Long organizationId, String campaignSetId,
+            final ProgressResponseBody.ProgressListener progressListener,
+            final ProgressRequestBody.ProgressRequestListener progressRequestListener) throws ApiException {
         Object localVarPostBody = null;
-        
+
         // create path and map variables
-        String localVarPath = "/advertise/v1/organizations/{organizationId}/apps/{campaignSetId}/budgets";
+        String localVarPath = "/advertise/v1/organizations/{organizationId}/apps/{campaignSetId}/budgets"
+                .replaceAll("\\{" + "organizationId" + "\\}", apiClient.escapeString(organizationId.toString()))
+                .replaceAll("\\{" + "campaignSetId" + "\\}", apiClient.escapeString(campaignSetId.toString()));
 
         List<Pair> localVarQueryParams = new ArrayList<Pair>();
         List<Pair> localVarCollectionQueryParams = new ArrayList<Pair>();
@@ -433,76 +513,100 @@ public class BudgetsApi {
         Map<String, Object> localVarFormParams = new HashMap<String, Object>();
 
         final String[] localVarAccepts = {
-            "application/json"
+                "application/json"
         };
         final String localVarAccept = apiClient.selectHeaderAccept(localVarAccepts);
-        if (localVarAccept != null) localVarHeaderParams.put("Accept", localVarAccept);
+        if (localVarAccept != null)
+            localVarHeaderParams.put("Accept", localVarAccept);
 
         final String[] localVarContentTypes = {
-            
+
         };
         final String localVarContentType = apiClient.selectHeaderContentType(localVarContentTypes);
         localVarHeaderParams.put("Content-Type", localVarContentType);
 
-        if(progressListener != null) {
+        if (progressListener != null) {
             apiClient.getHttpClient().networkInterceptors().add(new com.squareup.okhttp.Interceptor() {
                 @Override
-                public com.squareup.okhttp.Response intercept(com.squareup.okhttp.Interceptor.Chain chain) throws IOException {
+                public com.squareup.okhttp.Response intercept(com.squareup.okhttp.Interceptor.Chain chain)
+                        throws IOException {
                     com.squareup.okhttp.Response originalResponse = chain.proceed(chain.request());
                     return originalResponse.newBuilder()
-                    .body(new ProgressResponseBody(originalResponse.body(), progressListener))
-                    .build();
+                            .body(new ProgressResponseBody(originalResponse.body(), progressListener))
+                            .build();
                 }
             });
         }
 
         String[] localVarAuthNames = new String[] { "Authentication" };
-        return apiClient.buildCall(localVarPath, "GET", localVarQueryParams, localVarCollectionQueryParams, localVarPostBody, localVarHeaderParams, localVarFormParams, localVarAuthNames, progressRequestListener);
+        return apiClient.buildCall(localVarPath, "GET", localVarQueryParams, localVarCollectionQueryParams,
+                localVarPostBody, localVarHeaderParams, localVarFormParams, localVarAuthNames, progressRequestListener);
     }
-    
+
     @SuppressWarnings("rawtypes")
-    private com.squareup.okhttp.Call advertiseListBudgetsValidateBeforeCall(final ProgressResponseBody.ProgressListener progressListener, final ProgressRequestBody.ProgressRequestListener progressRequestListener) throws ApiException {
-        
-        com.squareup.okhttp.Call call = advertiseListBudgetsCall(progressListener, progressRequestListener);
+    private com.squareup.okhttp.Call advertiseListBudgetsValidateBeforeCall(Long organizationId, String campaignSetId,
+            final ProgressResponseBody.ProgressListener progressListener,
+            final ProgressRequestBody.ProgressRequestListener progressRequestListener) throws ApiException {
+        if (organizationId == null) {
+            throw new ApiException(
+                    "Missing the required parameter 'organizationId' when calling advertiseListCampaigns(Async)");
+        }
+        if (campaignSetId == null) {
+            throw new ApiException(
+                    "Missing the required parameter 'campaignSetId' when calling advertiseListCampaigns(Async)");
+        }
+
+        com.squareup.okhttp.Call call = advertiseListBudgetsCall(organizationId, campaignSetId, progressListener,
+                progressRequestListener);
         return call;
 
-        
-        
-        
-        
     }
 
     /**
      * List Budgets
      * This endpoint lists campaign budgets for a single app
+     * 
+     * @param campaignSetId
+     * @param organizationId
      * @return AdvertiseBudgetsResponseBody
-     * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+     * @throws ApiException If fail to call the API, e.g. server error or cannot
+     *                      deserialize the response body
      */
-    public AdvertiseBudgetsResponseBody advertiseListBudgets() throws ApiException {
-        ApiResponse<AdvertiseBudgetsResponseBody> resp = advertiseListBudgetsWithHttpInfo();
+    public AdvertiseBudgetsResponseBody advertiseListBudgets(Long organizationId, String campaignSetId)
+            throws ApiException {
+        ApiResponse<AdvertiseBudgetsResponseBody> resp = advertiseListBudgetsWithHttpInfo(organizationId,
+                campaignSetId);
         return resp.getData();
     }
 
     /**
      * List Budgets
      * This endpoint lists campaign budgets for a single app
+     * 
      * @return ApiResponse&lt;AdvertiseBudgetsResponseBody&gt;
-     * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+     * @throws ApiException If fail to call the API, e.g. server error or cannot
+     *                      deserialize the response body
      */
-    public ApiResponse<AdvertiseBudgetsResponseBody> advertiseListBudgetsWithHttpInfo() throws ApiException {
-        com.squareup.okhttp.Call call = advertiseListBudgetsValidateBeforeCall(null, null);
-        Type localVarReturnType = new TypeToken<AdvertiseBudgetsResponseBody>(){}.getType();
+    public ApiResponse<AdvertiseBudgetsResponseBody> advertiseListBudgetsWithHttpInfo(Long organizationId,
+            String campaignSetId) throws ApiException {
+        com.squareup.okhttp.Call call = advertiseListBudgetsValidateBeforeCall(organizationId, campaignSetId, null,
+                null);
+        Type localVarReturnType = new TypeToken<AdvertiseBudgetsResponseBody>() {
+        }.getType();
         return apiClient.execute(call, localVarReturnType);
     }
 
     /**
      * List Budgets (asynchronously)
      * This endpoint lists campaign budgets for a single app
+     * 
      * @param callback The callback to be executed when the API call finishes
      * @return The request call
-     * @throws ApiException If fail to process the API call, e.g. serializing the request body object
+     * @throws ApiException If fail to process the API call, e.g. serializing the
+     *                      request body object
      */
-    public com.squareup.okhttp.Call advertiseListBudgetsAsync(final ApiCallback<AdvertiseBudgetsResponseBody> callback) throws ApiException {
+    public com.squareup.okhttp.Call advertiseListBudgetsAsync(Long organizationId, String campaignSetId, final ApiCallback<AdvertiseBudgetsResponseBody> callback)
+            throws ApiException {
 
         ProgressResponseBody.ProgressListener progressListener = null;
         ProgressRequestBody.ProgressRequestListener progressRequestListener = null;
@@ -523,22 +627,28 @@ public class BudgetsApi {
             };
         }
 
-        com.squareup.okhttp.Call call = advertiseListBudgetsValidateBeforeCall(progressListener, progressRequestListener);
-        Type localVarReturnType = new TypeToken<AdvertiseBudgetsResponseBody>(){}.getType();
+        com.squareup.okhttp.Call call = advertiseListBudgetsValidateBeforeCall(organizationId, campaignSetId, progressListener,
+                progressRequestListener);
+        Type localVarReturnType = new TypeToken<AdvertiseBudgetsResponseBody>() {
+        }.getType();
         apiClient.executeAsync(call, localVarReturnType, callback);
         return call;
     }
+
     /**
      * Build call for advertiseReplaceAssignedBudget
-     * @param body  (required)
-     * @param progressListener Progress listener
+     * 
+     * @param body                    (required)
+     * @param progressListener        Progress listener
      * @param progressRequestListener Progress request listener
      * @return Call to execute
      * @throws ApiException If fail to serialize the request body object
      */
-    public com.squareup.okhttp.Call advertiseReplaceAssignedBudgetCall(AdvertiseAssignedBudgetRequestBody body, final ProgressResponseBody.ProgressListener progressListener, final ProgressRequestBody.ProgressRequestListener progressRequestListener) throws ApiException {
+    public com.squareup.okhttp.Call advertiseReplaceAssignedBudgetCall(AdvertiseAssignedBudgetRequestBody body,
+            final ProgressResponseBody.ProgressListener progressListener,
+            final ProgressRequestBody.ProgressRequestListener progressRequestListener) throws ApiException {
         Object localVarPostBody = body;
-        
+
         // create path and map variables
         String localVarPath = "/advertise/v1/organizations/{organizationId}/apps/{campaignSetId}/campaigns/{campaignId}/assigned-budget";
 
@@ -550,83 +660,126 @@ public class BudgetsApi {
         Map<String, Object> localVarFormParams = new HashMap<String, Object>();
 
         final String[] localVarAccepts = {
-            "application/json"
+                "application/json"
         };
         final String localVarAccept = apiClient.selectHeaderAccept(localVarAccepts);
-        if (localVarAccept != null) localVarHeaderParams.put("Accept", localVarAccept);
+        if (localVarAccept != null)
+            localVarHeaderParams.put("Accept", localVarAccept);
 
         final String[] localVarContentTypes = {
-            "application/json"
+                "application/json"
         };
         final String localVarContentType = apiClient.selectHeaderContentType(localVarContentTypes);
         localVarHeaderParams.put("Content-Type", localVarContentType);
 
-        if(progressListener != null) {
+        if (progressListener != null) {
             apiClient.getHttpClient().networkInterceptors().add(new com.squareup.okhttp.Interceptor() {
                 @Override
-                public com.squareup.okhttp.Response intercept(com.squareup.okhttp.Interceptor.Chain chain) throws IOException {
+                public com.squareup.okhttp.Response intercept(com.squareup.okhttp.Interceptor.Chain chain)
+                        throws IOException {
                     com.squareup.okhttp.Response originalResponse = chain.proceed(chain.request());
                     return originalResponse.newBuilder()
-                    .body(new ProgressResponseBody(originalResponse.body(), progressListener))
-                    .build();
+                            .body(new ProgressResponseBody(originalResponse.body(), progressListener))
+                            .build();
                 }
             });
         }
 
         String[] localVarAuthNames = new String[] { "Authentication" };
-        return apiClient.buildCall(localVarPath, "PUT", localVarQueryParams, localVarCollectionQueryParams, localVarPostBody, localVarHeaderParams, localVarFormParams, localVarAuthNames, progressRequestListener);
+        return apiClient.buildCall(localVarPath, "PUT", localVarQueryParams, localVarCollectionQueryParams,
+                localVarPostBody, localVarHeaderParams, localVarFormParams, localVarAuthNames, progressRequestListener);
     }
-    
+
     @SuppressWarnings("rawtypes")
-    private com.squareup.okhttp.Call advertiseReplaceAssignedBudgetValidateBeforeCall(AdvertiseAssignedBudgetRequestBody body, final ProgressResponseBody.ProgressListener progressListener, final ProgressRequestBody.ProgressRequestListener progressRequestListener) throws ApiException {
+    private com.squareup.okhttp.Call advertiseReplaceAssignedBudgetValidateBeforeCall(
+            AdvertiseAssignedBudgetRequestBody body, final ProgressResponseBody.ProgressListener progressListener,
+            final ProgressRequestBody.ProgressRequestListener progressRequestListener) throws ApiException {
         // verify the required parameter 'body' is set
         if (body == null) {
-            throw new ApiException("Missing the required parameter 'body' when calling advertiseReplaceAssignedBudget(Async)");
+            throw new ApiException(
+                    "Missing the required parameter 'body' when calling advertiseReplaceAssignedBudget(Async)");
         }
-        
-        com.squareup.okhttp.Call call = advertiseReplaceAssignedBudgetCall(body, progressListener, progressRequestListener);
+
+        com.squareup.okhttp.Call call = advertiseReplaceAssignedBudgetCall(body, progressListener,
+                progressRequestListener);
         return call;
 
-        
-        
-        
-        
     }
 
     /**
      * Assign Budget
-     * This endpoint is used for assigning a budget to a campaign. This endpoint can also be used for changing a previously assigned budget to another budget.  To unassign a budget from a campaign, use the &lt;a href&#x3D;\&quot;#operation/advertise-unassignBudget\&quot;&gt;unassign budget endpoint&lt;/a&gt;.  &lt;div style&#x3D;\&quot;background-color: #b38629; color: white; padding: 1em; padding-top: 1em; font-size: 1em;\&quot;&gt;   Support for shared budgets will be removed in Fall 2022. If you are sharing budgets between any campaigns, please consider moving to using a single budget per campaign. You can do so by creating a new budget for the campaign. Note that some features may not be available for campaigns using shared budgets. &lt;/div&gt; 
-     * @param body  (required)
+     * This endpoint is used for assigning a budget to a campaign. This endpoint can
+     * also be used for changing a previously assigned budget to another budget. To
+     * unassign a budget from a campaign, use the &lt;a
+     * href&#x3D;\&quot;#operation/advertise-unassignBudget\&quot;&gt;unassign
+     * budget endpoint&lt;/a&gt;. &lt;div style&#x3D;\&quot;background-color:
+     * #b38629; color: white; padding: 1em; padding-top: 1em; font-size:
+     * 1em;\&quot;&gt; Support for shared budgets will be removed in Fall 2022. If
+     * you are sharing budgets between any campaigns, please consider moving to
+     * using a single budget per campaign. You can do so by creating a new budget
+     * for the campaign. Note that some features may not be available for campaigns
+     * using shared budgets. &lt;/div&gt;
+     * 
+     * @param body (required)
      * @return AdvertiseAssignedBudgetResponseBody
-     * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+     * @throws ApiException If fail to call the API, e.g. server error or cannot
+     *                      deserialize the response body
      */
-    public AdvertiseAssignedBudgetResponseBody advertiseReplaceAssignedBudget(AdvertiseAssignedBudgetRequestBody body) throws ApiException {
+    public AdvertiseAssignedBudgetResponseBody advertiseReplaceAssignedBudget(AdvertiseAssignedBudgetRequestBody body)
+            throws ApiException {
         ApiResponse<AdvertiseAssignedBudgetResponseBody> resp = advertiseReplaceAssignedBudgetWithHttpInfo(body);
         return resp.getData();
     }
 
     /**
      * Assign Budget
-     * This endpoint is used for assigning a budget to a campaign. This endpoint can also be used for changing a previously assigned budget to another budget.  To unassign a budget from a campaign, use the &lt;a href&#x3D;\&quot;#operation/advertise-unassignBudget\&quot;&gt;unassign budget endpoint&lt;/a&gt;.  &lt;div style&#x3D;\&quot;background-color: #b38629; color: white; padding: 1em; padding-top: 1em; font-size: 1em;\&quot;&gt;   Support for shared budgets will be removed in Fall 2022. If you are sharing budgets between any campaigns, please consider moving to using a single budget per campaign. You can do so by creating a new budget for the campaign. Note that some features may not be available for campaigns using shared budgets. &lt;/div&gt; 
-     * @param body  (required)
+     * This endpoint is used for assigning a budget to a campaign. This endpoint can
+     * also be used for changing a previously assigned budget to another budget. To
+     * unassign a budget from a campaign, use the &lt;a
+     * href&#x3D;\&quot;#operation/advertise-unassignBudget\&quot;&gt;unassign
+     * budget endpoint&lt;/a&gt;. &lt;div style&#x3D;\&quot;background-color:
+     * #b38629; color: white; padding: 1em; padding-top: 1em; font-size:
+     * 1em;\&quot;&gt; Support for shared budgets will be removed in Fall 2022. If
+     * you are sharing budgets between any campaigns, please consider moving to
+     * using a single budget per campaign. You can do so by creating a new budget
+     * for the campaign. Note that some features may not be available for campaigns
+     * using shared budgets. &lt;/div&gt;
+     * 
+     * @param body (required)
      * @return ApiResponse&lt;AdvertiseAssignedBudgetResponseBody&gt;
-     * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+     * @throws ApiException If fail to call the API, e.g. server error or cannot
+     *                      deserialize the response body
      */
-    public ApiResponse<AdvertiseAssignedBudgetResponseBody> advertiseReplaceAssignedBudgetWithHttpInfo(AdvertiseAssignedBudgetRequestBody body) throws ApiException {
+    public ApiResponse<AdvertiseAssignedBudgetResponseBody> advertiseReplaceAssignedBudgetWithHttpInfo(
+            AdvertiseAssignedBudgetRequestBody body) throws ApiException {
         com.squareup.okhttp.Call call = advertiseReplaceAssignedBudgetValidateBeforeCall(body, null, null);
-        Type localVarReturnType = new TypeToken<AdvertiseAssignedBudgetResponseBody>(){}.getType();
+        Type localVarReturnType = new TypeToken<AdvertiseAssignedBudgetResponseBody>() {
+        }.getType();
         return apiClient.execute(call, localVarReturnType);
     }
 
     /**
      * Assign Budget (asynchronously)
-     * This endpoint is used for assigning a budget to a campaign. This endpoint can also be used for changing a previously assigned budget to another budget.  To unassign a budget from a campaign, use the &lt;a href&#x3D;\&quot;#operation/advertise-unassignBudget\&quot;&gt;unassign budget endpoint&lt;/a&gt;.  &lt;div style&#x3D;\&quot;background-color: #b38629; color: white; padding: 1em; padding-top: 1em; font-size: 1em;\&quot;&gt;   Support for shared budgets will be removed in Fall 2022. If you are sharing budgets between any campaigns, please consider moving to using a single budget per campaign. You can do so by creating a new budget for the campaign. Note that some features may not be available for campaigns using shared budgets. &lt;/div&gt; 
-     * @param body  (required)
+     * This endpoint is used for assigning a budget to a campaign. This endpoint can
+     * also be used for changing a previously assigned budget to another budget. To
+     * unassign a budget from a campaign, use the &lt;a
+     * href&#x3D;\&quot;#operation/advertise-unassignBudget\&quot;&gt;unassign
+     * budget endpoint&lt;/a&gt;. &lt;div style&#x3D;\&quot;background-color:
+     * #b38629; color: white; padding: 1em; padding-top: 1em; font-size:
+     * 1em;\&quot;&gt; Support for shared budgets will be removed in Fall 2022. If
+     * you are sharing budgets between any campaigns, please consider moving to
+     * using a single budget per campaign. You can do so by creating a new budget
+     * for the campaign. Note that some features may not be available for campaigns
+     * using shared budgets. &lt;/div&gt;
+     * 
+     * @param body     (required)
      * @param callback The callback to be executed when the API call finishes
      * @return The request call
-     * @throws ApiException If fail to process the API call, e.g. serializing the request body object
+     * @throws ApiException If fail to process the API call, e.g. serializing the
+     *                      request body object
      */
-    public com.squareup.okhttp.Call advertiseReplaceAssignedBudgetAsync(AdvertiseAssignedBudgetRequestBody body, final ApiCallback<AdvertiseAssignedBudgetResponseBody> callback) throws ApiException {
+    public com.squareup.okhttp.Call advertiseReplaceAssignedBudgetAsync(AdvertiseAssignedBudgetRequestBody body,
+            final ApiCallback<AdvertiseAssignedBudgetResponseBody> callback) throws ApiException {
 
         ProgressResponseBody.ProgressListener progressListener = null;
         ProgressRequestBody.ProgressRequestListener progressRequestListener = null;
@@ -647,21 +800,27 @@ public class BudgetsApi {
             };
         }
 
-        com.squareup.okhttp.Call call = advertiseReplaceAssignedBudgetValidateBeforeCall(body, progressListener, progressRequestListener);
-        Type localVarReturnType = new TypeToken<AdvertiseAssignedBudgetResponseBody>(){}.getType();
+        com.squareup.okhttp.Call call = advertiseReplaceAssignedBudgetValidateBeforeCall(body, progressListener,
+                progressRequestListener);
+        Type localVarReturnType = new TypeToken<AdvertiseAssignedBudgetResponseBody>() {
+        }.getType();
         apiClient.executeAsync(call, localVarReturnType, callback);
         return call;
     }
+
     /**
      * Build call for advertiseUnassignBudget
-     * @param progressListener Progress listener
+     * 
+     * @param progressListener        Progress listener
      * @param progressRequestListener Progress request listener
      * @return Call to execute
      * @throws ApiException If fail to serialize the request body object
      */
-    public com.squareup.okhttp.Call advertiseUnassignBudgetCall(final ProgressResponseBody.ProgressListener progressListener, final ProgressRequestBody.ProgressRequestListener progressRequestListener) throws ApiException {
+    public com.squareup.okhttp.Call advertiseUnassignBudgetCall(
+            final ProgressResponseBody.ProgressListener progressListener,
+            final ProgressRequestBody.ProgressRequestListener progressRequestListener) throws ApiException {
         Object localVarPostBody = null;
-        
+
         // create path and map variables
         String localVarPath = "/advertise/v1/organizations/{organizationId}/apps/{campaignSetId}/campaigns/{campaignId}/assigned-budget";
 
@@ -673,49 +832,52 @@ public class BudgetsApi {
         Map<String, Object> localVarFormParams = new HashMap<String, Object>();
 
         final String[] localVarAccepts = {
-            
+
         };
         final String localVarAccept = apiClient.selectHeaderAccept(localVarAccepts);
-        if (localVarAccept != null) localVarHeaderParams.put("Accept", localVarAccept);
+        if (localVarAccept != null)
+            localVarHeaderParams.put("Accept", localVarAccept);
 
         final String[] localVarContentTypes = {
-            
+
         };
         final String localVarContentType = apiClient.selectHeaderContentType(localVarContentTypes);
         localVarHeaderParams.put("Content-Type", localVarContentType);
 
-        if(progressListener != null) {
+        if (progressListener != null) {
             apiClient.getHttpClient().networkInterceptors().add(new com.squareup.okhttp.Interceptor() {
                 @Override
-                public com.squareup.okhttp.Response intercept(com.squareup.okhttp.Interceptor.Chain chain) throws IOException {
+                public com.squareup.okhttp.Response intercept(com.squareup.okhttp.Interceptor.Chain chain)
+                        throws IOException {
                     com.squareup.okhttp.Response originalResponse = chain.proceed(chain.request());
                     return originalResponse.newBuilder()
-                    .body(new ProgressResponseBody(originalResponse.body(), progressListener))
-                    .build();
+                            .body(new ProgressResponseBody(originalResponse.body(), progressListener))
+                            .build();
                 }
             });
         }
 
         String[] localVarAuthNames = new String[] { "Authentication" };
-        return apiClient.buildCall(localVarPath, "DELETE", localVarQueryParams, localVarCollectionQueryParams, localVarPostBody, localVarHeaderParams, localVarFormParams, localVarAuthNames, progressRequestListener);
+        return apiClient.buildCall(localVarPath, "DELETE", localVarQueryParams, localVarCollectionQueryParams,
+                localVarPostBody, localVarHeaderParams, localVarFormParams, localVarAuthNames, progressRequestListener);
     }
-    
+
     @SuppressWarnings("rawtypes")
-    private com.squareup.okhttp.Call advertiseUnassignBudgetValidateBeforeCall(final ProgressResponseBody.ProgressListener progressListener, final ProgressRequestBody.ProgressRequestListener progressRequestListener) throws ApiException {
-        
+    private com.squareup.okhttp.Call advertiseUnassignBudgetValidateBeforeCall(
+            final ProgressResponseBody.ProgressListener progressListener,
+            final ProgressRequestBody.ProgressRequestListener progressRequestListener) throws ApiException {
+
         com.squareup.okhttp.Call call = advertiseUnassignBudgetCall(progressListener, progressRequestListener);
         return call;
 
-        
-        
-        
-        
     }
 
     /**
      * Unassign Budget
-     * This endpoint is used to unassign the current budget of a campaign. 
-     * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+     * This endpoint is used to unassign the current budget of a campaign.
+     * 
+     * @throws ApiException If fail to call the API, e.g. server error or cannot
+     *                      deserialize the response body
      */
     public void advertiseUnassignBudget() throws ApiException {
         advertiseUnassignBudgetWithHttpInfo();
@@ -723,9 +885,11 @@ public class BudgetsApi {
 
     /**
      * Unassign Budget
-     * This endpoint is used to unassign the current budget of a campaign. 
+     * This endpoint is used to unassign the current budget of a campaign.
+     * 
      * @return ApiResponse&lt;Void&gt;
-     * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+     * @throws ApiException If fail to call the API, e.g. server error or cannot
+     *                      deserialize the response body
      */
     public ApiResponse<Void> advertiseUnassignBudgetWithHttpInfo() throws ApiException {
         com.squareup.okhttp.Call call = advertiseUnassignBudgetValidateBeforeCall(null, null);
@@ -734,10 +898,12 @@ public class BudgetsApi {
 
     /**
      * Unassign Budget (asynchronously)
-     * This endpoint is used to unassign the current budget of a campaign. 
+     * This endpoint is used to unassign the current budget of a campaign.
+     * 
      * @param callback The callback to be executed when the API call finishes
      * @return The request call
-     * @throws ApiException If fail to process the API call, e.g. serializing the request body object
+     * @throws ApiException If fail to process the API call, e.g. serializing the
+     *                      request body object
      */
     public com.squareup.okhttp.Call advertiseUnassignBudgetAsync(final ApiCallback<Void> callback) throws ApiException {
 
@@ -760,21 +926,26 @@ public class BudgetsApi {
             };
         }
 
-        com.squareup.okhttp.Call call = advertiseUnassignBudgetValidateBeforeCall(progressListener, progressRequestListener);
+        com.squareup.okhttp.Call call = advertiseUnassignBudgetValidateBeforeCall(progressListener,
+                progressRequestListener);
         apiClient.executeAsync(call, callback);
         return call;
     }
+
     /**
      * Build call for advertiseUpdateBudget
-     * @param body  (required)
-     * @param progressListener Progress listener
+     * 
+     * @param body                    (required)
+     * @param progressListener        Progress listener
      * @param progressRequestListener Progress request listener
      * @return Call to execute
      * @throws ApiException If fail to serialize the request body object
      */
-    public com.squareup.okhttp.Call advertiseUpdateBudgetCall(AdvertiseUpdateBudgetRequestBody body, final ProgressResponseBody.ProgressListener progressListener, final ProgressRequestBody.ProgressRequestListener progressRequestListener) throws ApiException {
+    public com.squareup.okhttp.Call advertiseUpdateBudgetCall(AdvertiseUpdateBudgetRequestBody body,
+            final ProgressResponseBody.ProgressListener progressListener,
+            final ProgressRequestBody.ProgressRequestListener progressRequestListener) throws ApiException {
         Object localVarPostBody = body;
-        
+
         // create path and map variables
         String localVarPath = "/advertise/v1/organizations/{organizationId}/apps/{campaignSetId}/budgets/{budgetId}";
 
@@ -786,83 +957,100 @@ public class BudgetsApi {
         Map<String, Object> localVarFormParams = new HashMap<String, Object>();
 
         final String[] localVarAccepts = {
-            "application/json"
+                "application/json"
         };
         final String localVarAccept = apiClient.selectHeaderAccept(localVarAccepts);
-        if (localVarAccept != null) localVarHeaderParams.put("Accept", localVarAccept);
+        if (localVarAccept != null)
+            localVarHeaderParams.put("Accept", localVarAccept);
 
         final String[] localVarContentTypes = {
-            "application/json"
+                "application/json"
         };
         final String localVarContentType = apiClient.selectHeaderContentType(localVarContentTypes);
         localVarHeaderParams.put("Content-Type", localVarContentType);
 
-        if(progressListener != null) {
+        if (progressListener != null) {
             apiClient.getHttpClient().networkInterceptors().add(new com.squareup.okhttp.Interceptor() {
                 @Override
-                public com.squareup.okhttp.Response intercept(com.squareup.okhttp.Interceptor.Chain chain) throws IOException {
+                public com.squareup.okhttp.Response intercept(com.squareup.okhttp.Interceptor.Chain chain)
+                        throws IOException {
                     com.squareup.okhttp.Response originalResponse = chain.proceed(chain.request());
                     return originalResponse.newBuilder()
-                    .body(new ProgressResponseBody(originalResponse.body(), progressListener))
-                    .build();
+                            .body(new ProgressResponseBody(originalResponse.body(), progressListener))
+                            .build();
                 }
             });
         }
 
         String[] localVarAuthNames = new String[] { "Authentication" };
-        return apiClient.buildCall(localVarPath, "PATCH", localVarQueryParams, localVarCollectionQueryParams, localVarPostBody, localVarHeaderParams, localVarFormParams, localVarAuthNames, progressRequestListener);
+        return apiClient.buildCall(localVarPath, "PATCH", localVarQueryParams, localVarCollectionQueryParams,
+                localVarPostBody, localVarHeaderParams, localVarFormParams, localVarAuthNames, progressRequestListener);
     }
-    
+
     @SuppressWarnings("rawtypes")
-    private com.squareup.okhttp.Call advertiseUpdateBudgetValidateBeforeCall(AdvertiseUpdateBudgetRequestBody body, final ProgressResponseBody.ProgressListener progressListener, final ProgressRequestBody.ProgressRequestListener progressRequestListener) throws ApiException {
+    private com.squareup.okhttp.Call advertiseUpdateBudgetValidateBeforeCall(AdvertiseUpdateBudgetRequestBody body,
+            final ProgressResponseBody.ProgressListener progressListener,
+            final ProgressRequestBody.ProgressRequestListener progressRequestListener) throws ApiException {
         // verify the required parameter 'body' is set
         if (body == null) {
             throw new ApiException("Missing the required parameter 'body' when calling advertiseUpdateBudget(Async)");
         }
-        
+
         com.squareup.okhttp.Call call = advertiseUpdateBudgetCall(body, progressListener, progressRequestListener);
         return call;
 
-        
-        
-        
-        
     }
 
     /**
      * Update Budget
-     * This endpoint is used to update campaign budget.  **Note**: this endpoint supports partial updates. The payload can contain, for example, only a new value for the &#x60;total&#x60; limit. 
-     * @param body  (required)
+     * This endpoint is used to update campaign budget. **Note**: this endpoint
+     * supports partial updates. The payload can contain, for example, only a new
+     * value for the &#x60;total&#x60; limit.
+     * 
+     * @param body (required)
      * @return AdvertiseUpdateBudgetsResponseBody
-     * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+     * @throws ApiException If fail to call the API, e.g. server error or cannot
+     *                      deserialize the response body
      */
-    public AdvertiseUpdateBudgetsResponseBody advertiseUpdateBudget(AdvertiseUpdateBudgetRequestBody body) throws ApiException {
+    public AdvertiseUpdateBudgetsResponseBody advertiseUpdateBudget(AdvertiseUpdateBudgetRequestBody body)
+            throws ApiException {
         ApiResponse<AdvertiseUpdateBudgetsResponseBody> resp = advertiseUpdateBudgetWithHttpInfo(body);
         return resp.getData();
     }
 
     /**
      * Update Budget
-     * This endpoint is used to update campaign budget.  **Note**: this endpoint supports partial updates. The payload can contain, for example, only a new value for the &#x60;total&#x60; limit. 
-     * @param body  (required)
+     * This endpoint is used to update campaign budget. **Note**: this endpoint
+     * supports partial updates. The payload can contain, for example, only a new
+     * value for the &#x60;total&#x60; limit.
+     * 
+     * @param body (required)
      * @return ApiResponse&lt;AdvertiseUpdateBudgetsResponseBody&gt;
-     * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+     * @throws ApiException If fail to call the API, e.g. server error or cannot
+     *                      deserialize the response body
      */
-    public ApiResponse<AdvertiseUpdateBudgetsResponseBody> advertiseUpdateBudgetWithHttpInfo(AdvertiseUpdateBudgetRequestBody body) throws ApiException {
+    public ApiResponse<AdvertiseUpdateBudgetsResponseBody> advertiseUpdateBudgetWithHttpInfo(
+            AdvertiseUpdateBudgetRequestBody body) throws ApiException {
         com.squareup.okhttp.Call call = advertiseUpdateBudgetValidateBeforeCall(body, null, null);
-        Type localVarReturnType = new TypeToken<AdvertiseUpdateBudgetsResponseBody>(){}.getType();
+        Type localVarReturnType = new TypeToken<AdvertiseUpdateBudgetsResponseBody>() {
+        }.getType();
         return apiClient.execute(call, localVarReturnType);
     }
 
     /**
      * Update Budget (asynchronously)
-     * This endpoint is used to update campaign budget.  **Note**: this endpoint supports partial updates. The payload can contain, for example, only a new value for the &#x60;total&#x60; limit. 
-     * @param body  (required)
+     * This endpoint is used to update campaign budget. **Note**: this endpoint
+     * supports partial updates. The payload can contain, for example, only a new
+     * value for the &#x60;total&#x60; limit.
+     * 
+     * @param body     (required)
      * @param callback The callback to be executed when the API call finishes
      * @return The request call
-     * @throws ApiException If fail to process the API call, e.g. serializing the request body object
+     * @throws ApiException If fail to process the API call, e.g. serializing the
+     *                      request body object
      */
-    public com.squareup.okhttp.Call advertiseUpdateBudgetAsync(AdvertiseUpdateBudgetRequestBody body, final ApiCallback<AdvertiseUpdateBudgetsResponseBody> callback) throws ApiException {
+    public com.squareup.okhttp.Call advertiseUpdateBudgetAsync(AdvertiseUpdateBudgetRequestBody body,
+            final ApiCallback<AdvertiseUpdateBudgetsResponseBody> callback) throws ApiException {
 
         ProgressResponseBody.ProgressListener progressListener = null;
         ProgressRequestBody.ProgressRequestListener progressRequestListener = null;
@@ -883,8 +1071,10 @@ public class BudgetsApi {
             };
         }
 
-        com.squareup.okhttp.Call call = advertiseUpdateBudgetValidateBeforeCall(body, progressListener, progressRequestListener);
-        Type localVarReturnType = new TypeToken<AdvertiseUpdateBudgetsResponseBody>(){}.getType();
+        com.squareup.okhttp.Call call = advertiseUpdateBudgetValidateBeforeCall(body, progressListener,
+                progressRequestListener);
+        Type localVarReturnType = new TypeToken<AdvertiseUpdateBudgetsResponseBody>() {
+        }.getType();
         apiClient.executeAsync(call, localVarReturnType, callback);
         return call;
     }

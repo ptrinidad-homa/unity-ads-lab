@@ -20,7 +20,7 @@ import io.gsonfire.GsonFireBuilder;
 import io.gsonfire.PostProcessor;
 import io.gsonfire.TypeSelector;
 import io.swagger.client.model.AdvertiseRoasTypes;
-import io.swagger.client.model.ICampaign;
+import io.swagger.client.model.AnAdvertiseCampaign;
 import io.swagger.client.toRefactor.*;
 
 import com.google.gson.JsonParseException;
@@ -49,7 +49,7 @@ public class JSON {
     private SqlDateTypeAdapter sqlDateTypeAdapter = new SqlDateTypeAdapter();
     private OffsetDateTimeTypeAdapter offsetDateTimeTypeAdapter = new OffsetDateTimeTypeAdapter();
     private LocalDateTypeAdapter localDateTypeAdapter = new LocalDateTypeAdapter();
-    private ICampaign.Adapter campaignAdapter = new ICampaign.Adapter();
+    private AnAdvertiseCampaign.Adapter campaignAdapter = new AnAdvertiseCampaign.Adapter();
 
     public static GsonBuilder createGson() {
         GsonFireBuilder fireBuilder = new GsonFireBuilder()
@@ -84,72 +84,10 @@ public class JSON {
                   }
               }
           })
-          .registerTypeSelector(AdvertiseBudgetDaily.class, new TypeSelector<AdvertiseBudgetDaily>() {
-            @Override
-            public Class<? extends AdvertiseBudgetDaily> getClassForElement(JsonElement readElement) {
-                Map<String, Class<? extends AdvertiseBudgetDaily>> classByDiscriminatorValue = new HashMap<>();
-                    classByDiscriminatorValue.put("advertise.requestBudgetDaily".toUpperCase(), AdvertiseRequestBudgetDaily.class);
-                    classByDiscriminatorValue.put("advertise.responseBudgetDaily".toUpperCase(), AdvertiseResponseBudgetDaily.class);
-                    classByDiscriminatorValue.put("AdvertiseBudgetDaily".toUpperCase(), AdvertiseBudgetDaily.class);
-                return getClassByDiscriminator(
-                            classByDiscriminatorValue,
-                            getDiscriminatorValue(readElement, ""));
-            }
-          })
-          .registerPostProcessor(AdvertiseBudgetDaily.class, new PostProcessor<AdvertiseBudgetDaily>() {
-              @Override
-              public void postDeserialize(AdvertiseBudgetDaily result, JsonElement src, Gson gson) {
 
-              }
 
-              @Override
-              public void postSerialize(JsonElement result, AdvertiseBudgetDaily src, Gson gson) {
-                  Map<Class<? extends AdvertiseBudgetDaily>, String> discriminatorValueByClass = new HashMap<>();
-                      discriminatorValueByClass.put(AdvertiseRequestBudgetDaily.class, "advertise.requestBudgetDaily");
-                      discriminatorValueByClass.put(AdvertiseResponseBudgetDaily.class, "advertise.responseBudgetDaily");
-                      discriminatorValueByClass.put(AdvertiseBudgetDaily.class, "AdvertiseBudgetDaily");
-                  if(result instanceof JsonObject)
-                  {
-                      if(!((JsonObject) result).has(""))
-                      {
-                          ((JsonObject) result).addProperty("", discriminatorValueByClass.get(src.getClass()));
-                      }
-                  }
-              }
-          })
-          .registerTypeSelector(AdvertiseBudgetTotal.class, new TypeSelector<AdvertiseBudgetTotal>() {
-            @Override
-            public Class<? extends AdvertiseBudgetTotal> getClassForElement(JsonElement readElement) {
-                Map<String, Class<? extends AdvertiseBudgetTotal>> classByDiscriminatorValue = new HashMap<>();
-                    classByDiscriminatorValue.put("advertise.requestBudgetTotal".toUpperCase(), AdvertiseRequestBudgetTotal.class);
-                    classByDiscriminatorValue.put("advertise.responseBudgetTotal".toUpperCase(), AdvertiseResponseBudgetTotal.class);
-                    classByDiscriminatorValue.put("AdvertiseBudgetTotal".toUpperCase(), AdvertiseBudgetTotal.class);
-                return getClassByDiscriminator(
-                            classByDiscriminatorValue,
-                            getDiscriminatorValue(readElement, ""));
-            }
-          })
-          .registerPostProcessor(AdvertiseBudgetTotal.class, new PostProcessor<AdvertiseBudgetTotal>() {
-              @Override
-              public void postDeserialize(AdvertiseBudgetTotal result, JsonElement src, Gson gson) {
 
-              }
-
-              @Override
-              public void postSerialize(JsonElement result, AdvertiseBudgetTotal src, Gson gson) {
-                  Map<Class<? extends AdvertiseBudgetTotal>, String> discriminatorValueByClass = new HashMap<>();
-                      discriminatorValueByClass.put(AdvertiseRequestBudgetTotal.class, "advertise.requestBudgetTotal");
-                      discriminatorValueByClass.put(AdvertiseResponseBudgetTotal.class, "advertise.responseBudgetTotal");
-                      discriminatorValueByClass.put(AdvertiseBudgetTotal.class, "AdvertiseBudgetTotal");
-                  if(result instanceof JsonObject)
-                  {
-                      if(!((JsonObject) result).has(""))
-                      {
-                          ((JsonObject) result).addProperty("", discriminatorValueByClass.get(src.getClass()));
-                      }
-                  }
-              }
-          })
+          
         ;
         return fireBuilder.createGsonBuilder();
     }
@@ -176,7 +114,7 @@ public class JSON {
             .registerTypeAdapter(java.sql.Date.class, sqlDateTypeAdapter)
             .registerTypeAdapter(OffsetDateTime.class, offsetDateTimeTypeAdapter)
             .registerTypeAdapter(LocalDate.class, localDateTypeAdapter)
-            .registerTypeAdapter(ICampaign.class, campaignAdapter)
+            .registerTypeAdapter(AnAdvertiseCampaign.class, campaignAdapter)
             .create();
     }
 

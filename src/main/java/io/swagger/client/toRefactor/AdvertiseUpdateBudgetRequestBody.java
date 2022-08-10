@@ -20,8 +20,7 @@ import com.google.gson.annotations.SerializedName;
 import com.google.gson.stream.JsonReader;
 import com.google.gson.stream.JsonWriter;
 
-import io.swagger.client.toRefactor.AdvertiseRequestBudgetDaily;
-import io.swagger.client.toRefactor.AdvertiseRequestBudgetTotal;
+import io.swagger.client.TypeUtils;
 import io.swagger.v3.oas.annotations.media.Schema;
 import java.io.IOException;
 /**
@@ -34,10 +33,10 @@ public class AdvertiseUpdateBudgetRequestBody {
   private String name = null;
 
   @SerializedName("total")
-  private AdvertiseRequestBudgetTotal total = null;
+  private String total = null;
 
   @SerializedName("daily")
-  private AdvertiseRequestBudgetDaily daily = null;
+  private String daily = null;
 
   public AdvertiseUpdateBudgetRequestBody name(String name) {
     this.name = name;
@@ -57,8 +56,8 @@ public class AdvertiseUpdateBudgetRequestBody {
     this.name = name;
   }
 
-  public AdvertiseUpdateBudgetRequestBody total(AdvertiseRequestBudgetTotal total) {
-    this.total = total;
+  public AdvertiseUpdateBudgetRequestBody total(String total) {
+    this.setTotal(total);
     return this;
   }
 
@@ -67,16 +66,16 @@ public class AdvertiseUpdateBudgetRequestBody {
    * @return total
   **/
   @Schema(description = "")
-  public AdvertiseRequestBudgetTotal getTotal() {
+  public String getTotal() {
     return total;
   }
 
-  public void setTotal(AdvertiseRequestBudgetTotal total) {
-    this.total = total;
+  public void setTotal(String total) {
+    this.total = TypeUtils.sanitizeMoneyWithPattern(total);
   }
 
-  public AdvertiseUpdateBudgetRequestBody daily(AdvertiseRequestBudgetDaily daily) {
-    this.daily = daily;
+  public AdvertiseUpdateBudgetRequestBody daily(String daily) {
+    this.setDaily(daily);
     return this;
   }
 
@@ -85,12 +84,12 @@ public class AdvertiseUpdateBudgetRequestBody {
    * @return daily
   **/
   @Schema(description = "")
-  public AdvertiseRequestBudgetDaily getDaily() {
+  public String getDaily() {
     return daily;
   }
 
-  public void setDaily(AdvertiseRequestBudgetDaily daily) {
-    this.daily = daily;
+  public void setDaily(String daily) {
+    this.daily = TypeUtils.sanitizeMoneyWithPattern(daily);
   }
 
 

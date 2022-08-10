@@ -45,6 +45,7 @@ public class AppsApiTest extends SetupApiTests {
         String filterStore = null;
         String filterStoreId = null;
         AdvertiseAppsResponseBody response = api.advertiseListApps(organizationId, offset, limit, filterStore, filterStoreId);
+
         Assert.assertTrue(response.getTotal() > 0);
     }
 
@@ -60,7 +61,6 @@ public class AppsApiTest extends SetupApiTests {
     @Test
     public void advertiseCreateAppTest() throws Exception {
         AdvertiseCreateAppRequestBody body = null;
-        Long organizationId = null;
         AdvertiseApp response = api.advertiseCreateApp(body, organizationId);
 
         // TODO: test validations

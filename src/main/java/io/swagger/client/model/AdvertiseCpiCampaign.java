@@ -26,7 +26,7 @@ import io.swagger.v3.oas.annotations.media.Schema;
  */
 @Schema(description = "An object that holds campaign data for CPI campaigns.")
 @javax.annotation.Generated(value = "io.swagger.codegen.v3.generators.java.JavaClientCodegen", date = "2022-08-09T13:51:56.064Z[GMT]")
-public class AdvertiseCpiCampaign extends ICampaign {
+public class AdvertiseCpiCampaign extends AnAdvertiseCampaign {
   public AdvertiseCpiCampaign(String id, String name, AdvertiseCampaignGoal goal, AdvertiseBillingType billingType,
       Boolean enabled, String attributionClickUrl, String attributionStartUrl, String attributionViewUrl,
       LocalDate scheduleStart, LocalDate scheduleEnd, OffsetDateTime createdAt, OffsetDateTime updatedAt) {

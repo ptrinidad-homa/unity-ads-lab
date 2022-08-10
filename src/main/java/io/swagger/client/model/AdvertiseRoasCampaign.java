@@ -27,7 +27,7 @@ import io.swagger.v3.oas.annotations.media.Schema;
  */
 @Schema(description = "An object that holds campaign data for ROAS campaigns.")
 @javax.annotation.Generated(value = "io.swagger.codegen.v3.generators.java.JavaClientCodegen", date = "2022-08-09T13:51:56.064Z[GMT]")
-public class AdvertiseRoasCampaign extends ICampaign {
+public class AdvertiseRoasCampaign extends AnAdvertiseCampaign {
 
   /**
    * 

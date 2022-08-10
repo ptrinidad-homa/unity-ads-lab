@@ -13,17 +13,11 @@
 package io.swagger.client.toRefactor;
 
 import java.util.Objects;
-import java.util.Arrays;
-import com.google.gson.TypeAdapter;
-import com.google.gson.annotations.JsonAdapter;
-import com.google.gson.annotations.SerializedName;
-import com.google.gson.stream.JsonReader;
-import com.google.gson.stream.JsonWriter;
 
-import io.swagger.client.toRefactor.AdvertiseRequestBudgetDaily;
-import io.swagger.client.toRefactor.AdvertiseRequestBudgetTotal;
+import com.google.gson.annotations.SerializedName;
+
+import io.swagger.client.TypeUtils;
 import io.swagger.v3.oas.annotations.media.Schema;
-import java.io.IOException;
 /**
  * AdvertiseCreateBudgetRequestBody
  */
@@ -34,10 +28,10 @@ public class AdvertiseCreateBudgetRequestBody {
   private String name = null;
 
   @SerializedName("total")
-  private AdvertiseRequestBudgetTotal total = null;
+  private String total = null;
 
   @SerializedName("daily")
-  private AdvertiseRequestBudgetDaily daily = null;
+  private String daily = null;
 
   public AdvertiseCreateBudgetRequestBody name(String name) {
     this.name = name;
@@ -57,8 +51,8 @@ public class AdvertiseCreateBudgetRequestBody {
     this.name = name;
   }
 
-  public AdvertiseCreateBudgetRequestBody total(AdvertiseRequestBudgetTotal total) {
-    this.total = total;
+  public AdvertiseCreateBudgetRequestBody total(String total) {
+    setTotal(total);
     return this;
   }
 
@@ -67,16 +61,16 @@ public class AdvertiseCreateBudgetRequestBody {
    * @return total
   **/
   @Schema(required = true, description = "")
-  public AdvertiseRequestBudgetTotal getTotal() {
+  public String getTotal() {
     return total;
   }
 
-  public void setTotal(AdvertiseRequestBudgetTotal total) {
-    this.total = total;
+  public void setTotal(String total) {
+    this.total = TypeUtils.sanitizeMoneyWithPattern(total);
   }
 
-  public AdvertiseCreateBudgetRequestBody daily(AdvertiseRequestBudgetDaily daily) {
-    this.daily = daily;
+  public AdvertiseCreateBudgetRequestBody daily(String daily) {
+    this.setDaily(daily);
     return this;
   }
 
@@ -85,12 +79,12 @@ public class AdvertiseCreateBudgetRequestBody {
    * @return daily
   **/
   @Schema(description = "")
-  public AdvertiseRequestBudgetDaily getDaily() {
+  public String getDaily() {
     return daily;
   }
 
-  public void setDaily(AdvertiseRequestBudgetDaily daily) {
-    this.daily = daily;
+  public void setDaily(String daily) {
+    this.daily = TypeUtils.sanitizeMoneyWithPattern(daily);
   }
 
 

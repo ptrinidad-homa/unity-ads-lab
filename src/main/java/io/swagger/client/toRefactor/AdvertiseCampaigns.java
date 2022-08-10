@@ -15,7 +15,7 @@ package io.swagger.client.toRefactor;
 import java.util.Objects;
 import java.util.Arrays;
 
-import io.swagger.client.model.ICampaign;
+import io.swagger.client.model.AnAdvertiseCampaign;
 import io.swagger.v3.oas.annotations.media.Schema;
 import java.util.ArrayList;
 import java.util.List;
@@ -24,7 +24,7 @@ import java.util.List;
  */
 @Schema(description = "Array of campaigns.")
 @javax.annotation.Generated(value = "io.swagger.codegen.v3.generators.java.JavaClientCodegen", date = "2022-08-09T13:51:56.064Z[GMT]")
-public class AdvertiseCampaigns extends ArrayList<ICampaign> {
+public class AdvertiseCampaigns extends ArrayList<AnAdvertiseCampaign> {
 
   @Override
   public boolean equals(java.lang.Object o) {

@@ -10,19 +10,18 @@
  * Do not edit the class manually.
  */
 
-package io.swagger.client.toRefactor;
+package io.swagger.client.model;
 
 import java.util.Objects;
 
-import io.swagger.client.toRefactor.AdvertiseBudgetDaily;
-
-import java.util.Arrays;
+import io.swagger.v3.oas.annotations.media.Schema;
+import java.util.ArrayList;
 /**
- * AdvertiseResponseBudgetDaily
+ * Array that holds budget data.
  */
-
+@Schema(description = "Array that holds budget data.")
 @javax.annotation.Generated(value = "io.swagger.codegen.v3.generators.java.JavaClientCodegen", date = "2022-08-09T13:51:56.064Z[GMT]")
-public class AdvertiseResponseBudgetDaily extends AdvertiseBudgetDaily {
+public class AdvertiseBudgets extends ArrayList<AdvertiseBudget> {
 
   @Override
   public boolean equals(java.lang.Object o) {
@@ -44,7 +43,7 @@ public class AdvertiseResponseBudgetDaily extends AdvertiseBudgetDaily {
   @Override
   public String toString() {
     StringBuilder sb = new StringBuilder();
-    sb.append("class AdvertiseResponseBudgetDaily {\n");
+    sb.append("class AdvertiseBudgets {\n");
     sb.append("    ").append(toIndentedString(super.toString())).append("\n");
     sb.append("}");
     return sb.toString();

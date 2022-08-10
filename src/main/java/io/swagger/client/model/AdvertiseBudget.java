@@ -10,19 +10,218 @@
  * Do not edit the class manually.
  */
 
-package io.swagger.client.toRefactor;
+package io.swagger.client.model;
 
 import java.util.Objects;
-
-import io.swagger.client.toRefactor.AdvertiseBudgetTotal;
-
+import java.util.regex.Matcher;
+import java.util.regex.Pattern;
 import java.util.Arrays;
-/**
- * AdvertiseResponseBudgetTotal
- */
+import com.google.gson.TypeAdapter;
+import com.google.gson.annotations.JsonAdapter;
+import com.google.gson.annotations.SerializedName;
+import com.google.gson.stream.JsonReader;
+import com.google.gson.stream.JsonWriter;
 
+import io.swagger.client.TypeUtils;
+import io.swagger.client.toRefactor.AdvertiseBudgetCampaignIds;
+import io.swagger.v3.oas.annotations.media.Schema;
+import java.io.IOException;
+import org.threeten.bp.OffsetDateTime;
+/**
+ * Campaign budget.
+ */
+@Schema(description = "Campaign budget.")
 @javax.annotation.Generated(value = "io.swagger.codegen.v3.generators.java.JavaClientCodegen", date = "2022-08-09T13:51:56.064Z[GMT]")
-public class AdvertiseResponseBudgetTotal extends AdvertiseBudgetTotal {
+public class AdvertiseBudget {
+  @SerializedName("id")
+  private String id = null;
+
+  @SerializedName("name")
+  private String name = null;
+
+  @SerializedName("total")
+  private String total = null;
+
+  @SerializedName("spent")
+  private String spent = null;
+
+  @SerializedName("daily")
+  private String daily = null;
+
+  @SerializedName("dailySpent")
+  private String dailySpent = null;
+
+  @SerializedName("campaignIds")
+  private AdvertiseBudgetCampaignIds campaignIds = null;
+
+  @SerializedName("createdAt")
+  private OffsetDateTime createdAt = null;
+
+  @SerializedName("updatedAt")
+  private OffsetDateTime updatedAt = null;
+
+  public AdvertiseBudget id(String id) {
+    this.id = id;
+    return this;
+  }
+
+   /**
+   * Get id
+   * @return id
+  **/
+  @Schema(description = "")
+  public String getId() {
+    return id;
+  }
+
+  public void setId(String id) {
+    this.id = id;
+  }
+
+  public AdvertiseBudget name(String name) {
+    this.name = name;
+    return this;
+  }
+
+   /**
+   * Get name
+   * @return name
+  **/
+  @Schema(description = "")
+  public String getName() {
+    return name;
+  }
+
+  public void setName(String name) {
+    this.name = name;
+  }
+
+  public AdvertiseBudget total(String total) {
+    setTotal(total);
+    return this;
+  }
+
+   /**
+   * Get total
+   * @return total
+  **/
+  @Schema(description = "")
+  public String getTotal() {
+    return total;
+  }
+
+  public void setTotal(String total) {
+    this.total = TypeUtils.sanitizeMoneyWithPattern(total);
+  }
+
+  public AdvertiseBudget spent(String spent) {
+    this.spent = spent;
+    return this;
+  }
+
+   /**
+   * Get spent
+   * @return spent
+  **/
+  @Schema(description = "")
+  public String getSpent() {
+    return spent;
+  }
+
+  public void setSpent(String spent) {
+    this.spent = spent;
+  }
+
+  public AdvertiseBudget daily(String daily) {
+    setDaily(daily);
+    return this;
+  }
+
+   /**
+   * Get daily
+   * @return daily
+  **/
+  @Schema(description = "")
+  public String getDaily() {
+    return daily;
+  }
+
+  public void setDaily(String daily) {
+    this.daily = TypeUtils.sanitizeMoneyWithPattern(daily);
+  }
+
+  public AdvertiseBudget dailySpent(String dailySpent) {
+    this.dailySpent = dailySpent;
+    return this;
+  }
+
+   /**
+   * Get dailySpent
+   * @return dailySpent
+  **/
+  @Schema(description = "")
+  public String getDailySpent() {
+    return dailySpent;
+  }
+
+  public void setDailySpent(String dailySpent) {
+    this.dailySpent = dailySpent;
+  }
+
+  public AdvertiseBudget campaignIds(AdvertiseBudgetCampaignIds campaignIds) {
+    this.campaignIds = campaignIds;
+    return this;
+  }
+
+   /**
+   * Get campaignIds
+   * @return campaignIds
+  **/
+  @Schema(description = "")
+  public AdvertiseBudgetCampaignIds getCampaignIds() {
+    return campaignIds;
+  }
+
+  public void setCampaignIds(AdvertiseBudgetCampaignIds campaignIds) {
+    this.campaignIds = campaignIds;
+  }
+
+  public AdvertiseBudget createdAt(OffsetDateTime createdAt) {
+    this.createdAt = createdAt;
+    return this;
+  }
+
+   /**
+   * Get createdAt
+   * @return createdAt
+  **/
+  @Schema(description = "")
+  public OffsetDateTime getCreatedAt() {
+    return createdAt;
+  }
+
+  public void setCreatedAt(OffsetDateTime createdAt) {
+    this.createdAt = createdAt;
+  }
+
+  public AdvertiseBudget updatedAt(OffsetDateTime updatedAt) {
+    this.updatedAt = updatedAt;
+    return this;
+  }
+
+   /**
+   * Get updatedAt
+   * @return updatedAt
+  **/
+  @Schema(description = "")
+  public OffsetDateTime getUpdatedAt() {
+    return updatedAt;
+  }
+
+  public void setUpdatedAt(OffsetDateTime updatedAt) {
+    this.updatedAt = updatedAt;
+  }
+
 
   @Override
   public boolean equals(java.lang.Object o) {
@@ -32,20 +231,38 @@ public class AdvertiseResponseBudgetTotal extends AdvertiseBudgetTotal {
     if (o == null || getClass() != o.getClass()) {
       return false;
     }
-    return super.equals(o);
+    AdvertiseBudget advertiseBudget = (AdvertiseBudget) o;
+    return Objects.equals(this.id, advertiseBudget.id) &&
+        Objects.equals(this.name, advertiseBudget.name) &&
+        Objects.equals(this.total, advertiseBudget.total) &&
+        Objects.equals(this.spent, advertiseBudget.spent) &&
+        Objects.equals(this.daily, advertiseBudget.daily) &&
+        Objects.equals(this.dailySpent, advertiseBudget.dailySpent) &&
+        Objects.equals(this.campaignIds, advertiseBudget.campaignIds) &&
+        Objects.equals(this.createdAt, advertiseBudget.createdAt) &&
+        Objects.equals(this.updatedAt, advertiseBudget.updatedAt);
   }
 
   @Override
   public int hashCode() {
-    return Objects.hash(super.hashCode());
+    return Objects.hash(id, name, total, spent, daily, dailySpent, campaignIds, createdAt, updatedAt);
   }
 
 
   @Override
   public String toString() {
     StringBuilder sb = new StringBuilder();
-    sb.append("class AdvertiseResponseBudgetTotal {\n");
-    sb.append("    ").append(toIndentedString(super.toString())).append("\n");
+    sb.append("class AdvertiseBudget {\n");
+    
+    sb.append("    id: ").append(toIndentedString(id)).append("\n");
+    sb.append("    name: ").append(toIndentedString(name)).append("\n");
+    sb.append("    total: ").append(toIndentedString(total)).append("\n");
+    sb.append("    spent: ").append(toIndentedString(spent)).append("\n");
+    sb.append("    daily: ").append(toIndentedString(daily)).append("\n");
+    sb.append("    dailySpent: ").append(toIndentedString(dailySpent)).append("\n");
+    sb.append("    campaignIds: ").append(toIndentedString(campaignIds)).append("\n");
+    sb.append("    createdAt: ").append(toIndentedString(createdAt)).append("\n");
+    sb.append("    updatedAt: ").append(toIndentedString(updatedAt)).append("\n");
     sb.append("}");
     return sb.toString();
   }

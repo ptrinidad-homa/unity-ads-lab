@@ -12,6 +12,15 @@
 
 package io.swagger.client.api;
 
+import java.io.IOException;
+import java.lang.reflect.Type;
+import java.util.ArrayList;
+import java.util.HashMap;
+import java.util.List;
+import java.util.Map;
+
+import com.google.gson.reflect.TypeToken;
+
 import io.swagger.client.ApiCallback;
 import io.swagger.client.ApiClient;
 import io.swagger.client.ApiException;
@@ -20,10 +29,10 @@ import io.swagger.client.Configuration;
 import io.swagger.client.Pair;
 import io.swagger.client.ProgressRequestBody;
 import io.swagger.client.ProgressResponseBody;
+import io.swagger.client.model.AnAdvertiseCampaign;
 import io.swagger.client.toRefactor.AdvertiseAssignCreativePackRequestBody;
 import io.swagger.client.toRefactor.AdvertiseAssignedCreativePack;
 import io.swagger.client.toRefactor.AdvertiseAssignedCreativePacksResponseBody;
-import io.swagger.client.toRefactor.AdvertiseCampaignResponseBody;
 import io.swagger.client.toRefactor.AdvertiseCampaignsResponseBody;
 import io.swagger.client.toRefactor.AdvertiseCreateCampaignRequestBody;
 import io.swagger.client.toRefactor.AdvertiseCreatedCampaignResponseBody;
@@ -32,15 +41,6 @@ import io.swagger.client.toRefactor.AdvertiseTargeting;
 import io.swagger.client.toRefactor.AdvertiseUpdateCampaignRequestBody;
 import io.swagger.client.toRefactor.AdvertiseUpdateTargetingResponseBody;
 import io.swagger.client.toRefactor.AdvertiseUpdatedCampaignResponseBody;
-
-import com.google.gson.reflect.TypeToken;
-
-import java.io.IOException;
-import java.lang.reflect.Type;
-import java.util.ArrayList;
-import java.util.HashMap;
-import java.util.List;
-import java.util.Map;
 
 public class CampaignsApi {
     private ApiClient apiClient;
@@ -428,11 +428,14 @@ public class CampaignsApi {
      * @return Call to execute
      * @throws ApiException If fail to serialize the request body object
      */
-    public com.squareup.okhttp.Call advertiseGetCampaignCall(final ProgressResponseBody.ProgressListener progressListener, final ProgressRequestBody.ProgressRequestListener progressRequestListener) throws ApiException {
+    public com.squareup.okhttp.Call advertiseGetCampaignCall(Long organizationId, String campaignSetId, String campaignId, final ProgressResponseBody.ProgressListener progressListener, final ProgressRequestBody.ProgressRequestListener progressRequestListener) throws ApiException {
         Object localVarPostBody = null;
         
         // create path and map variables
-        String localVarPath = "/advertise/v1/organizations/{organizationId}/apps/{campaignSetId}/campaigns/{campaignId}";
+        String localVarPath = "/advertise/v1/organizations/{organizationId}/apps/{campaignSetId}/campaigns/{campaignId}"
+            .replaceAll("\\{" + "organizationId" + "\\}", apiClient.escapeString(organizationId.toString()))
+            .replaceAll("\\{" + "campaignSetId" + "\\}", apiClient.escapeString(campaignSetId.toString()))
+            .replaceAll("\\{" + "campaignId" + "\\}", apiClient.escapeString(campaignId.toString()));
 
         List<Pair> localVarQueryParams = new ArrayList<Pair>();
         List<Pair> localVarCollectionQueryParams = new ArrayList<Pair>();
@@ -469,38 +472,41 @@ public class CampaignsApi {
         return apiClient.buildCall(localVarPath, "GET", localVarQueryParams, localVarCollectionQueryParams, localVarPostBody, localVarHeaderParams, localVarFormParams, localVarAuthNames, progressRequestListener);
     }
     
-    @SuppressWarnings("rawtypes")
-    private com.squareup.okhttp.Call advertiseGetCampaignValidateBeforeCall(final ProgressResponseBody.ProgressListener progressListener, final ProgressRequestBody.ProgressRequestListener progressRequestListener) throws ApiException {
-        
-        com.squareup.okhttp.Call call = advertiseGetCampaignCall(progressListener, progressRequestListener);
-        return call;
+    private com.squareup.okhttp.Call advertiseGetCampaignValidateBeforeCall(Long organizationId, String campaignSetId, String campaignId, final ProgressResponseBody.ProgressListener progressListener, final ProgressRequestBody.ProgressRequestListener progressRequestListener) throws ApiException {
+        if (organizationId == null) {
+            throw new ApiException("Missing the required parameter 'organizationId' when calling advertiseListCampaigns(Async)");
+        }
+        if (campaignSetId == null) {
+            throw new ApiException("Missing the required parameter 'campaignSetId' when calling advertiseListCampaigns(Async)");
+        }
+        if (campaignId == null) {
+            throw new ApiException("Missing the required parameter 'campaignId' when calling advertiseListCampaigns(Async)");
+        }
 
-        
-        
-        
-        
+        com.squareup.okhttp.Call call = advertiseGetCampaignCall(organizationId, campaignSetId, campaignId, progressListener, progressRequestListener);
+        return call;  
     }
 
     /**
      * Get Campaign
      * This endpoint returns the campaign information for a given campaign id.
-     * @return AdvertiseCampaignResponseBody
+     * @return AnAdvertiseCampaign
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      */
-    public AdvertiseCampaignResponseBody advertiseGetCampaign() throws ApiException {
-        ApiResponse<AdvertiseCampaignResponseBody> resp = advertiseGetCampaignWithHttpInfo();
-        return resp.getData();
+    public AnAdvertiseCampaign advertiseGetCampaign(Long organizationId, String campaignSetId, String campaignId) throws ApiException {
+        ApiResponse<AnAdvertiseCampaign> resp = advertiseGetCampaignWithHttpInfo(organizationId, campaignSetId, campaignId);
+        return resp.getData();  
     }
 
     /**
      * Get Campaign
      * This endpoint returns the campaign information for a given campaign id.
-     * @return ApiResponse&lt;AdvertiseCampaignResponseBody&gt;
+     * @return ApiResponse&lt;AnAdvertiseCampaign&gt;
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      */
-    public ApiResponse<AdvertiseCampaignResponseBody> advertiseGetCampaignWithHttpInfo() throws ApiException {
-        com.squareup.okhttp.Call call = advertiseGetCampaignValidateBeforeCall(null, null);
-        Type localVarReturnType = new TypeToken<AdvertiseCampaignResponseBody>(){}.getType();
+    public ApiResponse<AnAdvertiseCampaign> advertiseGetCampaignWithHttpInfo(Long organizationId, String campaignSetId, String campaignId) throws ApiException {
+        com.squareup.okhttp.Call call = advertiseGetCampaignValidateBeforeCall(organizationId, campaignSetId, campaignId, null, null);
+        Type localVarReturnType = new TypeToken<AnAdvertiseCampaign>(){}.getType();
         return apiClient.execute(call, localVarReturnType);
     }
 
@@ -511,7 +517,7 @@ public class CampaignsApi {
      * @return The request call
      * @throws ApiException If fail to process the API call, e.g. serializing the request body object
      */
-    public com.squareup.okhttp.Call advertiseGetCampaignAsync(final ApiCallback<AdvertiseCampaignResponseBody> callback) throws ApiException {
+    public com.squareup.okhttp.Call advertiseGetCampaignAsync(Long organizationId, String campaignSetId, String campaignId, final ApiCallback<AnAdvertiseCampaign> callback) throws ApiException {
 
         ProgressResponseBody.ProgressListener progressListener = null;
         ProgressRequestBody.ProgressRequestListener progressRequestListener = null;
@@ -532,8 +538,8 @@ public class CampaignsApi {
             };
         }
 
-        com.squareup.okhttp.Call call = advertiseGetCampaignValidateBeforeCall(progressListener, progressRequestListener);
-        Type localVarReturnType = new TypeToken<AdvertiseCampaignResponseBody>(){}.getType();
+        com.squareup.okhttp.Call call = advertiseGetCampaignValidateBeforeCall(organizationId, campaignSetId, campaignId, progressListener, progressRequestListener);
+        Type localVarReturnType = new TypeToken<AnAdvertiseCampaign>(){}.getType();
         apiClient.executeAsync(call, localVarReturnType, callback);
         return call;
     }
@@ -585,7 +591,7 @@ public class CampaignsApi {
         return apiClient.buildCall(localVarPath, "GET", localVarQueryParams, localVarCollectionQueryParams, localVarPostBody, localVarHeaderParams, localVarFormParams, localVarAuthNames, progressRequestListener);
     }
     
-    @SuppressWarnings("rawtypes")
+
     private com.squareup.okhttp.Call advertiseGetTargetingValidateBeforeCall(final ProgressResponseBody.ProgressListener progressListener, final ProgressRequestBody.ProgressRequestListener progressRequestListener) throws ApiException {
         
         com.squareup.okhttp.Call call = advertiseGetTargetingCall(progressListener, progressRequestListener);

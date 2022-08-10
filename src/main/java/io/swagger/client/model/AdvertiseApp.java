@@ -17,6 +17,8 @@ import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
 import com.google.gson.annotations.SerializedName;
+
+import io.swagger.client.TypeUtils;
 import io.swagger.v3.oas.annotations.media.Schema;
 import org.threeten.bp.OffsetDateTime;
 
@@ -59,7 +61,7 @@ public class AdvertiseApp {
   }
 
   public void setId(String id) {
-    this.id = sanitizeIdWithPattern(id);
+    this.id = TypeUtils.sanitizeStoreIdWithPattern(id);
   }
 
   public AdvertiseApp id(String id) {
@@ -67,17 +69,6 @@ public class AdvertiseApp {
     return this;
   }
 
-  private String sanitizeIdWithPattern(String id) {
-    String pattern = "^[0-9a-fA-F]{24}$";
-    Pattern regex = Pattern.compile(pattern);
-    Matcher matcher = regex.matcher(storeId);
-    if (matcher.find()) {
-      return matcher.group(1);
-    } else {
-      throw new IllegalArgumentException(
-          String.format("Campaign set ID %s doesn't match with pattern %s", storeId, pattern));
-    }
-  }
   /**
    * Get name
    * 
