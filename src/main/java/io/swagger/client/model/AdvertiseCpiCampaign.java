@@ -13,277 +13,29 @@
 package io.swagger.client.model;
 
 import java.util.Objects;
-import java.util.Arrays;
-import com.google.gson.TypeAdapter;
-import com.google.gson.annotations.JsonAdapter;
-import com.google.gson.annotations.SerializedName;
-import com.google.gson.stream.JsonReader;
-import com.google.gson.stream.JsonWriter;
 
-import io.swagger.client.toRefactor.AdvertiseBillingType;
-import io.swagger.client.toRefactor.AdvertiseCampaignGoal;
-import io.swagger.v3.oas.annotations.media.Schema;
-import java.io.IOException;
 import org.threeten.bp.LocalDate;
 import org.threeten.bp.OffsetDateTime;
+
+import io.swagger.client.model.enums.AdvertiseBillingType;
+import io.swagger.client.model.enums.AdvertiseCampaignGoal;
+import io.swagger.v3.oas.annotations.media.Schema;
+
 /**
  * An object that holds campaign data for CPI campaigns.
  */
 @Schema(description = "An object that holds campaign data for CPI campaigns.")
 @javax.annotation.Generated(value = "io.swagger.codegen.v3.generators.java.JavaClientCodegen", date = "2022-08-09T13:51:56.064Z[GMT]")
-public class AdvertiseCpiCampaign implements ICampaign {
-  @SerializedName("id")
-  private String id = null;
-
-  @SerializedName("name")
-  private String name = null;
-
-  @SerializedName("goal")
-  private AdvertiseCampaignGoal goal = null;
-
-  @SerializedName("billingType")
-  private AdvertiseBillingType billingType = null;
-
-  @SerializedName("enabled")
-  private Boolean enabled = null;
-
-  @SerializedName("attributionClickUrl")
-  private String attributionClickUrl = null;
-
-  @SerializedName("attributionStartUrl")
-  private String attributionStartUrl = null;
-
-  @SerializedName("attributionViewUrl")
-  private String attributionViewUrl = null;
-
-  @SerializedName("scheduleStart")
-  private LocalDate scheduleStart = null;
-
-  @SerializedName("scheduleEnd")
-  private LocalDate scheduleEnd = null;
-
-  @SerializedName("createdAt")
-  private OffsetDateTime createdAt = null;
-
-  @SerializedName("updatedAt")
-  private OffsetDateTime updatedAt = null;
-
-  public AdvertiseCpiCampaign id(String id) {
-    this.id = id;
-    return this;
+public class AdvertiseCpiCampaign extends ICampaign {
+  public AdvertiseCpiCampaign(String id, String name, AdvertiseCampaignGoal goal, AdvertiseBillingType billingType,
+      Boolean enabled, String attributionClickUrl, String attributionStartUrl, String attributionViewUrl,
+      LocalDate scheduleStart, LocalDate scheduleEnd, OffsetDateTime createdAt, OffsetDateTime updatedAt) {
+    super(id, name, goal, billingType, enabled, attributionClickUrl, attributionStartUrl, attributionViewUrl,
+        scheduleStart, scheduleEnd, createdAt, updatedAt);
   }
 
-   /**
-   * Get id
-   * @return id
-  **/
-  @Schema(required = true, description = "")
-  public String getId() {
-    return id;
+  public AdvertiseCpiCampaign() {
   }
-
-  public void setId(String id) {
-    this.id = id;
-  }
-
-  public AdvertiseCpiCampaign name(String name) {
-    this.name = name;
-    return this;
-  }
-
-   /**
-   * Get name
-   * @return name
-  **/
-  @Schema(description = "")
-  public String getName() {
-    return name;
-  }
-
-  public void setName(String name) {
-    this.name = name;
-  }
-
-  public AdvertiseCpiCampaign goal(AdvertiseCampaignGoal goal) {
-    this.goal = goal;
-    return this;
-  }
-
-   /**
-   * Get goal
-   * @return goal
-  **/
-  @Schema(required = true, description = "")
-  public AdvertiseCampaignGoal getGoal() {
-    return goal;
-  }
-
-  public void setGoal(AdvertiseCampaignGoal goal) {
-    this.goal = goal;
-  }
-
-  public AdvertiseCpiCampaign billingType(AdvertiseBillingType billingType) {
-    this.billingType = billingType;
-    return this;
-  }
-
-   /**
-   * Get billingType
-   * @return billingType
-  **/
-  @Schema(required = true, description = "")
-  public AdvertiseBillingType getBillingType() {
-    return billingType;
-  }
-
-  public void setBillingType(AdvertiseBillingType billingType) {
-    this.billingType = billingType;
-  }
-
-  public AdvertiseCpiCampaign enabled(Boolean enabled) {
-    this.enabled = enabled;
-    return this;
-  }
-
-   /**
-   * Get enabled
-   * @return enabled
-  **/
-  @Schema(required = true, description = "")
-  public Boolean getEnabled() {
-    return enabled;
-  }
-
-  public void setEnabled(Boolean enabled) {
-    this.enabled = enabled;
-  }
-
-  public AdvertiseCpiCampaign attributionClickUrl(String attributionClickUrl) {
-    this.attributionClickUrl = attributionClickUrl;
-    return this;
-  }
-
-   /**
-   * Get attributionClickUrl
-   * @return attributionClickUrl
-  **/
-  @Schema(required = true, description = "")
-  public String getAttributionClickUrl() {
-    return attributionClickUrl;
-  }
-
-  public void setAttributionClickUrl(String attributionClickUrl) {
-    this.attributionClickUrl = attributionClickUrl;
-  }
-
-  public AdvertiseCpiCampaign attributionStartUrl(String attributionStartUrl) {
-    this.attributionStartUrl = attributionStartUrl;
-    return this;
-  }
-
-   /**
-   * Get attributionStartUrl
-   * @return attributionStartUrl
-  **/
-  @Schema(required = true, description = "")
-  public String getAttributionStartUrl() {
-    return attributionStartUrl;
-  }
-
-  public void setAttributionStartUrl(String attributionStartUrl) {
-    this.attributionStartUrl = attributionStartUrl;
-  }
-
-  public AdvertiseCpiCampaign attributionViewUrl(String attributionViewUrl) {
-    this.attributionViewUrl = attributionViewUrl;
-    return this;
-  }
-
-   /**
-   * Get attributionViewUrl
-   * @return attributionViewUrl
-  **/
-  @Schema(required = true, description = "")
-  public String getAttributionViewUrl() {
-    return attributionViewUrl;
-  }
-
-  public void setAttributionViewUrl(String attributionViewUrl) {
-    this.attributionViewUrl = attributionViewUrl;
-  }
-
-  public AdvertiseCpiCampaign scheduleStart(LocalDate scheduleStart) {
-    this.scheduleStart = scheduleStart;
-    return this;
-  }
-
-   /**
-   * Get scheduleStart
-   * @return scheduleStart
-  **/
-  @Schema(required = true, description = "")
-  public LocalDate getScheduleStart() {
-    return scheduleStart;
-  }
-
-  public void setScheduleStart(LocalDate scheduleStart) {
-    this.scheduleStart = scheduleStart;
-  }
-
-  public AdvertiseCpiCampaign scheduleEnd(LocalDate scheduleEnd) {
-    this.scheduleEnd = scheduleEnd;
-    return this;
-  }
-
-   /**
-   * Get scheduleEnd
-   * @return scheduleEnd
-  **/
-  @Schema(required = true, description = "")
-  public LocalDate getScheduleEnd() {
-    return scheduleEnd;
-  }
-
-  public void setScheduleEnd(LocalDate scheduleEnd) {
-    this.scheduleEnd = scheduleEnd;
-  }
-
-  public AdvertiseCpiCampaign createdAt(OffsetDateTime createdAt) {
-    this.createdAt = createdAt;
-    return this;
-  }
-
-   /**
-   * Get createdAt
-   * @return createdAt
-  **/
-  @Schema(required = true, description = "")
-  public OffsetDateTime getCreatedAt() {
-    return createdAt;
-  }
-
-  public void setCreatedAt(OffsetDateTime createdAt) {
-    this.createdAt = createdAt;
-  }
-
-  public AdvertiseCpiCampaign updatedAt(OffsetDateTime updatedAt) {
-    this.updatedAt = updatedAt;
-    return this;
-  }
-
-   /**
-   * Get updatedAt
-   * @return updatedAt
-  **/
-  @Schema(required = true, description = "")
-  public OffsetDateTime getUpdatedAt() {
-    return updatedAt;
-  }
-
-  public void setUpdatedAt(OffsetDateTime updatedAt) {
-    this.updatedAt = updatedAt;
-  }
-
 
   @Override
   public boolean equals(java.lang.Object o) {
@@ -310,15 +62,15 @@ public class AdvertiseCpiCampaign implements ICampaign {
 
   @Override
   public int hashCode() {
-    return Objects.hash(id, name, goal, billingType, enabled, attributionClickUrl, attributionStartUrl, attributionViewUrl, scheduleStart, scheduleEnd, createdAt, updatedAt);
+    return Objects.hash(id, name, goal, billingType, enabled, attributionClickUrl, attributionStartUrl,
+        attributionViewUrl, scheduleStart, scheduleEnd, createdAt, updatedAt);
   }
-
 
   @Override
   public String toString() {
     StringBuilder sb = new StringBuilder();
     sb.append("class AdvertiseCpiCampaign {\n");
-    
+
     sb.append("    id: ").append(toIndentedString(id)).append("\n");
     sb.append("    name: ").append(toIndentedString(name)).append("\n");
     sb.append("    goal: ").append(toIndentedString(goal)).append("\n");
@@ -334,16 +86,4 @@ public class AdvertiseCpiCampaign implements ICampaign {
     sb.append("}");
     return sb.toString();
   }
-
-  /**
-   * Convert the given object to string with each line indented by 4 spaces
-   * (except the first line).
-   */
-  private String toIndentedString(java.lang.Object o) {
-    if (o == null) {
-      return "null";
-    }
-    return o.toString().replace("\n", "\n    ");
-  }
-
 }

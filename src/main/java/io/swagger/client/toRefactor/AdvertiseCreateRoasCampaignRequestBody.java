@@ -18,6 +18,8 @@ import org.threeten.bp.LocalDate;
 
 import com.google.gson.annotations.SerializedName;
 
+import io.swagger.client.model.enums.AdvertiseBillingType;
+import io.swagger.client.model.enums.AdvertiseCampaignGoal;
 import io.swagger.v3.oas.annotations.media.Schema;
 /**
  * AdvertiseCreateRoasCampaignRequestBody

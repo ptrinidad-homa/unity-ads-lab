@@ -16,7 +16,7 @@ import java.util.Objects;
 
 import com.google.gson.annotations.SerializedName;
 
-import io.swagger.client.model.StoreEnum;
+import io.swagger.client.model.enums.StoreEnum;
 import io.swagger.v3.oas.annotations.media.Schema;
 
 import java.util.regex.Matcher;

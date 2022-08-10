@@ -10,12 +10,8 @@
  * Do not edit the class manually.
  */
 
-package io.swagger.client.toRefactor;
+package io.swagger.client.model.enums;
 
-import java.util.Objects;
-import java.util.Arrays;
-import io.swagger.v3.oas.annotations.media.Schema;
-import com.google.gson.annotations.SerializedName;
 import java.io.IOException;
 import com.google.gson.TypeAdapter;
 import com.google.gson.annotations.JsonAdapter;
@@ -23,16 +19,17 @@ import com.google.gson.stream.JsonReader;
 import com.google.gson.stream.JsonWriter;
 
 /**
- * - iap: ROAS campaign is being optimized for In-App purchases. - adRevenue: ROAS campaign is being optimized for Ad revenue. 
+ * Campaign&#x27;s goal. Available options:  * **installs**: cost per install - campaign is optimized for getting the most installs possible with your target cost. * **roas**: return on ad spend - campaign is optimized for finding users who are predicted to bring your target return on ad spend during the first 7 days in your app. * **retention**: campaign is optimized for finding users who are likely to remain in your app for 7 days or more after installing. 
  */
-@JsonAdapter(AdvertiseRoasType.Adapter.class)
-public enum AdvertiseRoasType {
-  IAP("iap"),
-  ADREVENUE("adRevenue");
+@JsonAdapter(AdvertiseCampaignGoal.Adapter.class)
+public enum AdvertiseCampaignGoal {
+  INSTALLS("installs"),
+  RETENTION("retention"),
+  ROAS("roas");
 
   private String value;
 
-  AdvertiseRoasType(String value) {
+  AdvertiseCampaignGoal(String value) {
     this.value = value;
   }
 
@@ -45,8 +42,8 @@ public enum AdvertiseRoasType {
     return String.valueOf(value);
   }
 
-  public static AdvertiseRoasType fromValue(String input) {
-    for (AdvertiseRoasType b : AdvertiseRoasType.values()) {
+  public static AdvertiseCampaignGoal fromValue(String input) {
+    for (AdvertiseCampaignGoal b : AdvertiseCampaignGoal.values()) {
       if (b.value.equals(input)) {
         return b;
       }
@@ -54,16 +51,16 @@ public enum AdvertiseRoasType {
     return null;
   }
 
-  public static class Adapter extends TypeAdapter<AdvertiseRoasType> {
+  public static class Adapter extends TypeAdapter<AdvertiseCampaignGoal> {
     @Override
-    public void write(final JsonWriter jsonWriter, final AdvertiseRoasType enumeration) throws IOException {
+    public void write(final JsonWriter jsonWriter, final AdvertiseCampaignGoal enumeration) throws IOException {
       jsonWriter.value(String.valueOf(enumeration.getValue()));
     }
 
     @Override
-    public AdvertiseRoasType read(final JsonReader jsonReader) throws IOException {
+    public AdvertiseCampaignGoal read(final JsonReader jsonReader) throws IOException {
       Object value = jsonReader.nextString();
-      return AdvertiseRoasType.fromValue((String)(value));
+      return AdvertiseCampaignGoal.fromValue((String)(value));
     }
   }
 }

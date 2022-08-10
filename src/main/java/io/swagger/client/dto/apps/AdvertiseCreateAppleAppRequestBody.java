@@ -12,7 +12,7 @@
 
 package io.swagger.client.dto.apps;
 
-import io.swagger.client.model.StoreEnum;
+import io.swagger.client.model.enums.StoreEnum;
 /**
  * AdvertiseCreateAppleAppRequestBody
  */

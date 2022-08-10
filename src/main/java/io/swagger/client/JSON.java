@@ -19,6 +19,8 @@ import com.google.gson.JsonObject;
 import io.gsonfire.GsonFireBuilder;
 import io.gsonfire.PostProcessor;
 import io.gsonfire.TypeSelector;
+import io.swagger.client.model.AdvertiseRoasTypes;
+import io.swagger.client.model.ICampaign;
 import io.swagger.client.toRefactor.*;
 
 import com.google.gson.JsonParseException;
@@ -47,6 +49,7 @@ public class JSON {
     private SqlDateTypeAdapter sqlDateTypeAdapter = new SqlDateTypeAdapter();
     private OffsetDateTimeTypeAdapter offsetDateTimeTypeAdapter = new OffsetDateTimeTypeAdapter();
     private LocalDateTypeAdapter localDateTypeAdapter = new LocalDateTypeAdapter();
+    private ICampaign.Adapter campaignAdapter = new ICampaign.Adapter();
 
     public static GsonBuilder createGson() {
         GsonFireBuilder fireBuilder = new GsonFireBuilder()
@@ -173,6 +176,7 @@ public class JSON {
             .registerTypeAdapter(java.sql.Date.class, sqlDateTypeAdapter)
             .registerTypeAdapter(OffsetDateTime.class, offsetDateTimeTypeAdapter)
             .registerTypeAdapter(LocalDate.class, localDateTypeAdapter)
+            .registerTypeAdapter(ICampaign.class, campaignAdapter)
             .create();
     }
 

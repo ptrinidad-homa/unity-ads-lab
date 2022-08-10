@@ -14,7 +14,7 @@ package io.swagger.client.toRefactor;
 
 import java.util.Objects;
 
-import io.swagger.client.toRefactor.AdvertiseRoasTypes;
+import io.swagger.client.model.AdvertiseRoasTypes;
 
 import java.util.Arrays;
 /**

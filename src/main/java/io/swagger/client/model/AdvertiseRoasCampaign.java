@@ -13,282 +13,42 @@
 package io.swagger.client.model;
 
 import java.util.Objects;
-import java.util.Arrays;
-import com.google.gson.TypeAdapter;
-import com.google.gson.annotations.JsonAdapter;
-import com.google.gson.annotations.SerializedName;
-import com.google.gson.stream.JsonReader;
-import com.google.gson.stream.JsonWriter;
 
-import io.swagger.client.toRefactor.AdvertiseBillingType;
-import io.swagger.client.toRefactor.AdvertiseCampaignGoal;
-import io.swagger.client.toRefactor.AdvertiseRoasTypes;
-import io.swagger.v3.oas.annotations.media.Schema;
-import java.io.IOException;
 import org.threeten.bp.LocalDate;
 import org.threeten.bp.OffsetDateTime;
+
+import com.google.gson.annotations.SerializedName;
+
+import io.swagger.client.model.enums.AdvertiseBillingType;
+import io.swagger.client.model.enums.AdvertiseCampaignGoal;
+import io.swagger.v3.oas.annotations.media.Schema;
 /**
  * An object that holds campaign data for ROAS campaigns.
  */
 @Schema(description = "An object that holds campaign data for ROAS campaigns.")
 @javax.annotation.Generated(value = "io.swagger.codegen.v3.generators.java.JavaClientCodegen", date = "2022-08-09T13:51:56.064Z[GMT]")
-public class AdvertiseRoasCampaign implements ICampaign {
-  @SerializedName("id")
-  private String id = null;
+public class AdvertiseRoasCampaign extends ICampaign {
 
-  @SerializedName("name")
-  private String name = null;
+  /**
+   * 
+   */
+  public AdvertiseRoasCampaign() {
+    super();
+  }
 
-  @SerializedName("goal")
-  private AdvertiseCampaignGoal goal = null;
+  public AdvertiseRoasCampaign(String id, String name, AdvertiseCampaignGoal goal, AdvertiseBillingType billingType,
+      Boolean enabled, String attributionClickUrl, String attributionStartUrl, String attributionViewUrl,
+      LocalDate scheduleStart, LocalDate scheduleEnd, OffsetDateTime createdAt, OffsetDateTime updatedAt, AdvertiseRoasTypes roasTypes) {
+    super(id, name, goal, billingType, enabled, attributionClickUrl, attributionStartUrl, attributionViewUrl, scheduleStart,
+        scheduleEnd, createdAt, updatedAt);
+    this.roasTypes = roasTypes;
+  }
 
-  @SerializedName("billingType")
-  private AdvertiseBillingType billingType = null;
-
-  @SerializedName("enabled")
-  private Boolean enabled = null;
-
-  @SerializedName("attributionClickUrl")
-  private String attributionClickUrl = null;
-
-  @SerializedName("attributionStartUrl")
-  private String attributionStartUrl = null;
-
-  @SerializedName("attributionViewUrl")
-  private String attributionViewUrl = null;
-
-  @SerializedName("scheduleStart")
-  private LocalDate scheduleStart = null;
-
-  @SerializedName("scheduleEnd")
-  private LocalDate scheduleEnd = null;
-
-  @SerializedName("createdAt")
-  private OffsetDateTime createdAt = null;
-
-  @SerializedName("updatedAt")
-  private OffsetDateTime updatedAt = null;
 
   @SerializedName("roasTypes")
   private AdvertiseRoasTypes roasTypes = null;
 
-  public AdvertiseRoasCampaign id(String id) {
-    this.id = id;
-    return this;
-  }
-
-   /**
-   * Get id
-   * @return id
-  **/
-  @Schema(required = true, description = "")
-  public String getId() {
-    return id;
-  }
-
-  public void setId(String id) {
-    this.id = id;
-  }
-
-  public AdvertiseRoasCampaign name(String name) {
-    this.name = name;
-    return this;
-  }
-
-   /**
-   * Get name
-   * @return name
-  **/
-  @Schema(description = "")
-  public String getName() {
-    return name;
-  }
-
-  public void setName(String name) {
-    this.name = name;
-  }
-
-  public AdvertiseRoasCampaign goal(AdvertiseCampaignGoal goal) {
-    this.goal = goal;
-    return this;
-  }
-
-   /**
-   * Get goal
-   * @return goal
-  **/
-  @Schema(required = true, description = "")
-  public AdvertiseCampaignGoal getGoal() {
-    return goal;
-  }
-
-  public void setGoal(AdvertiseCampaignGoal goal) {
-    this.goal = goal;
-  }
-
-  public AdvertiseRoasCampaign billingType(AdvertiseBillingType billingType) {
-    this.billingType = billingType;
-    return this;
-  }
-
-   /**
-   * Get billingType
-   * @return billingType
-  **/
-  @Schema(required = true, description = "")
-  public AdvertiseBillingType getBillingType() {
-    return billingType;
-  }
-
-  public void setBillingType(AdvertiseBillingType billingType) {
-    this.billingType = billingType;
-  }
-
-  public AdvertiseRoasCampaign enabled(Boolean enabled) {
-    this.enabled = enabled;
-    return this;
-  }
-
-   /**
-   * Get enabled
-   * @return enabled
-  **/
-  @Schema(required = true, description = "")
-  public Boolean getEnabled() {
-    return enabled;
-  }
-
-  public void setEnabled(Boolean enabled) {
-    this.enabled = enabled;
-  }
-
-  public AdvertiseRoasCampaign attributionClickUrl(String attributionClickUrl) {
-    this.attributionClickUrl = attributionClickUrl;
-    return this;
-  }
-
-   /**
-   * Get attributionClickUrl
-   * @return attributionClickUrl
-  **/
-  @Schema(required = true, description = "")
-  public String getAttributionClickUrl() {
-    return attributionClickUrl;
-  }
-
-  public void setAttributionClickUrl(String attributionClickUrl) {
-    this.attributionClickUrl = attributionClickUrl;
-  }
-
-  public AdvertiseRoasCampaign attributionStartUrl(String attributionStartUrl) {
-    this.attributionStartUrl = attributionStartUrl;
-    return this;
-  }
-
-   /**
-   * Get attributionStartUrl
-   * @return attributionStartUrl
-  **/
-  @Schema(required = true, description = "")
-  public String getAttributionStartUrl() {
-    return attributionStartUrl;
-  }
-
-  public void setAttributionStartUrl(String attributionStartUrl) {
-    this.attributionStartUrl = attributionStartUrl;
-  }
-
-  public AdvertiseRoasCampaign attributionViewUrl(String attributionViewUrl) {
-    this.attributionViewUrl = attributionViewUrl;
-    return this;
-  }
-
-   /**
-   * Get attributionViewUrl
-   * @return attributionViewUrl
-  **/
-  @Schema(required = true, description = "")
-  public String getAttributionViewUrl() {
-    return attributionViewUrl;
-  }
-
-  public void setAttributionViewUrl(String attributionViewUrl) {
-    this.attributionViewUrl = attributionViewUrl;
-  }
-
-  public AdvertiseRoasCampaign scheduleStart(LocalDate scheduleStart) {
-    this.scheduleStart = scheduleStart;
-    return this;
-  }
-
-   /**
-   * Get scheduleStart
-   * @return scheduleStart
-  **/
-  @Schema(required = true, description = "")
-  public LocalDate getScheduleStart() {
-    return scheduleStart;
-  }
-
-  public void setScheduleStart(LocalDate scheduleStart) {
-    this.scheduleStart = scheduleStart;
-  }
-
-  public AdvertiseRoasCampaign scheduleEnd(LocalDate scheduleEnd) {
-    this.scheduleEnd = scheduleEnd;
-    return this;
-  }
-
-   /**
-   * Get scheduleEnd
-   * @return scheduleEnd
-  **/
-  @Schema(required = true, description = "")
-  public LocalDate getScheduleEnd() {
-    return scheduleEnd;
-  }
-
-  public void setScheduleEnd(LocalDate scheduleEnd) {
-    this.scheduleEnd = scheduleEnd;
-  }
-
-  public AdvertiseRoasCampaign createdAt(OffsetDateTime createdAt) {
-    this.createdAt = createdAt;
-    return this;
-  }
-
-   /**
-   * Get createdAt
-   * @return createdAt
-  **/
-  @Schema(required = true, description = "")
-  public OffsetDateTime getCreatedAt() {
-    return createdAt;
-  }
-
-  public void setCreatedAt(OffsetDateTime createdAt) {
-    this.createdAt = createdAt;
-  }
-
-  public AdvertiseRoasCampaign updatedAt(OffsetDateTime updatedAt) {
-    this.updatedAt = updatedAt;
-    return this;
-  }
-
-   /**
-   * Get updatedAt
-   * @return updatedAt
-  **/
-  @Schema(required = true, description = "")
-  public OffsetDateTime getUpdatedAt() {
-    return updatedAt;
-  }
-
-  public void setUpdatedAt(OffsetDateTime updatedAt) {
-    this.updatedAt = updatedAt;
-  }
-
-  public AdvertiseRoasCampaign roasTypes(AdvertiseRoasTypes roasTypes) {
+    public AdvertiseRoasCampaign roasTypes(AdvertiseRoasTypes roasTypes) {
     this.roasTypes = roasTypes;
     return this;
   }
@@ -358,16 +118,4 @@ public class AdvertiseRoasCampaign implements ICampaign {
     sb.append("}");
     return sb.toString();
   }
-
-  /**
-   * Convert the given object to string with each line indented by 4 spaces
-   * (except the first line).
-   */
-  private String toIndentedString(java.lang.Object o) {
-    if (o == null) {
-      return "null";
-    }
-    return o.toString().replace("\n", "\n    ");
-  }
-
 }

@@ -10,57 +10,56 @@
  * Do not edit the class manually.
  */
 
-package io.swagger.client.toRefactor;
+package io.swagger.client.model.enums;
 
-import java.util.Objects;
-import java.util.Arrays;
+import java.io.IOException;
+import com.google.gson.TypeAdapter;
+import com.google.gson.annotations.JsonAdapter;
+import com.google.gson.stream.JsonReader;
+import com.google.gson.stream.JsonWriter;
 
-import io.swagger.client.toRefactor.AdvertiseRoasType;
-import io.swagger.v3.oas.annotations.media.Schema;
-import java.util.ArrayList;
-import java.util.List;
 /**
- * An array with the ROAS types this campaign is optimizing for. Possible types:  * **iap**: The campaign is being optimized for IAP revenue. * **adRevenue**: The campaign is being optimized for Ad revenue. 
+ * - iap: ROAS campaign is being optimized for In-App purchases. - adRevenue: ROAS campaign is being optimized for Ad revenue. 
  */
-@Schema(description = "An array with the ROAS types this campaign is optimizing for. Possible types:  * **iap**: The campaign is being optimized for IAP revenue. * **adRevenue**: The campaign is being optimized for Ad revenue. ")
-@javax.annotation.Generated(value = "io.swagger.codegen.v3.generators.java.JavaClientCodegen", date = "2022-08-09T13:51:56.064Z[GMT]")
-public class AdvertiseRoasTypes extends ArrayList<AdvertiseRoasType> {
+@JsonAdapter(AdvertiseRoasType.Adapter.class)
+public enum AdvertiseRoasType {
+  IAP("iap"),
+  ADREVENUE("adRevenue");
 
-  @Override
-  public boolean equals(java.lang.Object o) {
-    if (this == o) {
-      return true;
-    }
-    if (o == null || getClass() != o.getClass()) {
-      return false;
-    }
-    return super.equals(o);
+  private String value;
+
+  AdvertiseRoasType(String value) {
+    this.value = value;
   }
 
-  @Override
-  public int hashCode() {
-    return Objects.hash(super.hashCode());
+  public String getValue() {
+    return value;
   }
-
 
   @Override
   public String toString() {
-    StringBuilder sb = new StringBuilder();
-    sb.append("class AdvertiseRoasTypes {\n");
-    sb.append("    ").append(toIndentedString(super.toString())).append("\n");
-    sb.append("}");
-    return sb.toString();
+    return String.valueOf(value);
   }
 
-  /**
-   * Convert the given object to string with each line indented by 4 spaces
-   * (except the first line).
-   */
-  private String toIndentedString(java.lang.Object o) {
-    if (o == null) {
-      return "null";
+  public static AdvertiseRoasType fromValue(String input) {
+    for (AdvertiseRoasType b : AdvertiseRoasType.values()) {
+      if (b.value.equals(input)) {
+        return b;
+      }
     }
-    return o.toString().replace("\n", "\n    ");
+    return null;
   }
 
+  public static class Adapter extends TypeAdapter<AdvertiseRoasType> {
+    @Override
+    public void write(final JsonWriter jsonWriter, final AdvertiseRoasType enumeration) throws IOException {
+      jsonWriter.value(String.valueOf(enumeration.getValue()));
+    }
+
+    @Override
+    public AdvertiseRoasType read(final JsonReader jsonReader) throws IOException {
+      Object value = jsonReader.nextString();
+      return AdvertiseRoasType.fromValue((String)(value));
+    }
+  }
 }

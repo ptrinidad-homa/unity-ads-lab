@@ -10,61 +10,57 @@
  * Do not edit the class manually.
  */
 
-package io.swagger.client.toRefactor;
+package io.swagger.client.model;
 
 import java.util.Objects;
 import java.util.Arrays;
+
+import io.swagger.client.model.enums.AdvertiseRoasType;
 import io.swagger.v3.oas.annotations.media.Schema;
-import com.google.gson.annotations.SerializedName;
-import java.io.IOException;
-import com.google.gson.TypeAdapter;
-import com.google.gson.annotations.JsonAdapter;
-import com.google.gson.stream.JsonReader;
-import com.google.gson.stream.JsonWriter;
-
+import java.util.ArrayList;
+import java.util.List;
 /**
- * Campaign&#x27;s goal. Available options:  * **installs**: cost per install - campaign is optimized for getting the most installs possible with your target cost. * **roas**: return on ad spend - campaign is optimized for finding users who are predicted to bring your target return on ad spend during the first 7 days in your app. * **retention**: campaign is optimized for finding users who are likely to remain in your app for 7 days or more after installing. 
+ * An array with the ROAS types this campaign is optimizing for. Possible types:  * **iap**: The campaign is being optimized for IAP revenue. * **adRevenue**: The campaign is being optimized for Ad revenue. 
  */
-@JsonAdapter(AdvertiseCampaignGoal.Adapter.class)
-public enum AdvertiseCampaignGoal {
-  INSTALLS("installs"),
-  RETENTION("retention"),
-  ROAS("roas");
+@Schema(description = "An array with the ROAS types this campaign is optimizing for. Possible types:  * **iap**: The campaign is being optimized for IAP revenue. * **adRevenue**: The campaign is being optimized for Ad revenue. ")
+@javax.annotation.Generated(value = "io.swagger.codegen.v3.generators.java.JavaClientCodegen", date = "2022-08-09T13:51:56.064Z[GMT]")
+public class AdvertiseRoasTypes extends ArrayList<AdvertiseRoasType> {
 
-  private String value;
-
-  AdvertiseCampaignGoal(String value) {
-    this.value = value;
-  }
-
-  public String getValue() {
-    return value;
+  @Override
+  public boolean equals(java.lang.Object o) {
+    if (this == o) {
+      return true;
+    }
+    if (o == null || getClass() != o.getClass()) {
+      return false;
+    }
+    return super.equals(o);
   }
 
   @Override
+  public int hashCode() {
+    return Objects.hash(super.hashCode());
+  }
+
+
+  @Override
   public String toString() {
-    return String.valueOf(value);
+    StringBuilder sb = new StringBuilder();
+    sb.append("class AdvertiseRoasTypes {\n");
+    sb.append("    ").append(toIndentedString(super.toString())).append("\n");
+    sb.append("}");
+    return sb.toString();
   }
 
-  public static AdvertiseCampaignGoal fromValue(String input) {
-    for (AdvertiseCampaignGoal b : AdvertiseCampaignGoal.values()) {
-      if (b.value.equals(input)) {
-        return b;
-      }
+  /**
+   * Convert the given object to string with each line indented by 4 spaces
+   * (except the first line).
+   */
+  private String toIndentedString(java.lang.Object o) {
+    if (o == null) {
+      return "null";
     }
-    return null;
+    return o.toString().replace("\n", "\n    ");
   }
 
-  public static class Adapter extends TypeAdapter<AdvertiseCampaignGoal> {
-    @Override
-    public void write(final JsonWriter jsonWriter, final AdvertiseCampaignGoal enumeration) throws IOException {
-      jsonWriter.value(String.valueOf(enumeration.getValue()));
-    }
-
-    @Override
-    public AdvertiseCampaignGoal read(final JsonReader jsonReader) throws IOException {
-      Object value = jsonReader.nextString();
-      return AdvertiseCampaignGoal.fromValue((String)(value));
-    }
-  }
 }

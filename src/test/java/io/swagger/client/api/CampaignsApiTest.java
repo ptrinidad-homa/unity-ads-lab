@@ -147,7 +147,7 @@ public class CampaignsApiTest extends SetupApiTests {
     @Test
     public void advertiseListCampaignsTest() throws Exception {
         AdvertiseCampaignsResponseBody response = api.advertiseListCampaigns(super.organizationId, "62ea8db677a830b59f6383cf");
-
+        System.out.println(response);
         // TODO: test validations
     }
     /**
