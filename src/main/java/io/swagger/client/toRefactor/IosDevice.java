@@ -1,0 +1,5 @@
+package io.swagger.client.toRefactor;
+
+public enum IosDevice {
+    iphone3gs, iphone4, iphone4s, iphone5, iphone5c, iphone5s, iphone6, iphone6plus, iphone6s, iphone6splus, iphonese, iphone7, iphone7plus, iphone8, iphone8plus, iphonex, iphonexr, iphonexs, iphonexsmax, iphone11, iphone11pro, iphone11promax, iphonese2g, iphone12mini, iphone12, iphone12pro, iphone12promax, iphone13mini, iphone13, iphone13pro, iphone13promax, iphonese3g, ipad2, ipad3, ipad4, ipadair, ipadair2, ipadair3g, ipadair4g, ipadair5g, ipadmini, ipadmini2g, ipadmini3, ipadmini4, ipadmini5g, ipadmini6g, ipadpro, ipadpro2, ipadpro3g_11inch, ipadpro3g_12inch, ipadpro2g_11inch, ipadpro4g_12inch, ipadpro5g_11inch, ipadpro5g_12inch, ipad2017, ipad2018, ipad2019, ipad2020, ipad2021, ipodtouch4g, ipodtouch5g, ipodtouch6g, ipodtouch7g
+}

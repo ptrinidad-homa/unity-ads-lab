@@ -1,0 +1,6 @@
+# AdvertiseLimitedAdTracking
+
+## Enum
+
+* `ALLOWING_AD_TRACKING` (value: `"USERS_ALLOWING_AD_TRACKING"`)
+* `NOT_ALLOWING_AD_TRACKING` (value: `"USERS_NOT_ALLOWING_AD_TRACKING"`)
