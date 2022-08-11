@@ -40,7 +40,7 @@ public class BidsApi {
     private ApiClient apiClient;
 
     public BidsApi() {
-        this(Configuration.getDefaultApiClient());
+        this(Configuration.getManagementApiClient());
     }
 
     public BidsApi(ApiClient apiClient) {
@@ -62,11 +62,14 @@ public class BidsApi {
      * @return Call to execute
      * @throws ApiException If fail to serialize the request body object
      */
-    public com.squareup.okhttp.Call advertiseListCpiBidsCall(final ProgressResponseBody.ProgressListener progressListener, final ProgressRequestBody.ProgressRequestListener progressRequestListener) throws ApiException {
+    public com.squareup.okhttp.Call advertiseListCpiBidsCall(Long organizationId, String campaignSetId, String campaignId, final ProgressResponseBody.ProgressListener progressListener, final ProgressRequestBody.ProgressRequestListener progressRequestListener) throws ApiException {
         Object localVarPostBody = null;
         
         // create path and map variables
-        String localVarPath = "/advertise/v1/organizations/{organizationId}/apps/{campaignSetId}/campaigns/{campaignId}/cpi-bids";
+        String localVarPath = "/advertise/v1/organizations/{organizationId}/apps/{campaignSetId}/campaigns/{campaignId}/cpi-bids"
+            .replaceAll("\\{" + "organizationId" + "\\}", apiClient.escapeString(organizationId.toString()))
+            .replaceAll("\\{" + "campaignSetId" + "\\}", apiClient.escapeString(campaignSetId.toString()))
+            .replaceAll("\\{" + "campaignId" + "\\}", apiClient.escapeString(campaignId.toString()));
 
         List<Pair> localVarQueryParams = new ArrayList<Pair>();
         List<Pair> localVarCollectionQueryParams = new ArrayList<Pair>();
@@ -103,16 +106,19 @@ public class BidsApi {
         return apiClient.buildCall(localVarPath, "GET", localVarQueryParams, localVarCollectionQueryParams, localVarPostBody, localVarHeaderParams, localVarFormParams, localVarAuthNames, progressRequestListener);
     }
     
-    @SuppressWarnings("rawtypes")
-    private com.squareup.okhttp.Call advertiseListCpiBidsValidateBeforeCall(final ProgressResponseBody.ProgressListener progressListener, final ProgressRequestBody.ProgressRequestListener progressRequestListener) throws ApiException {
-        
-        com.squareup.okhttp.Call call = advertiseListCpiBidsCall(progressListener, progressRequestListener);
-        return call;
+    private com.squareup.okhttp.Call advertiseListCpiBidsValidateBeforeCall(Long organizationId, String campaignSetId, String campaignId, final ProgressResponseBody.ProgressListener progressListener, final ProgressRequestBody.ProgressRequestListener progressRequestListener) throws ApiException {
+        if (organizationId == null) {
+            throw new ApiException("Missing the required parameter 'organizationId' when calling advertiseListCpiBids");
+        }
+        if (campaignSetId == null) {
+            throw new ApiException("Missing the required parameter 'campaignSetId' when calling advertiseListCpiBids");
+        }
+        if (campaignId == null) {
+            throw new ApiException("Missing the required parameter 'campaignId' when calling advertiseListCpiBids");
+        }
 
-        
-        
-        
-        
+        com.squareup.okhttp.Call call = advertiseListCpiBidsCall(organizationId, campaignSetId, campaignId, progressListener, progressRequestListener);
+        return call;
     }
 
     /**
@@ -121,8 +127,8 @@ public class BidsApi {
      * @return AdvertiseCpiBidsResponseBody
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      */
-    public AdvertiseCpiBidsResponseBody advertiseListCpiBids() throws ApiException {
-        ApiResponse<AdvertiseCpiBidsResponseBody> resp = advertiseListCpiBidsWithHttpInfo();
+    public AdvertiseCpiBidsResponseBody advertiseListCpiBids(Long organizationId, String campaignSetId, String campaignId) throws ApiException {
+        ApiResponse<AdvertiseCpiBidsResponseBody> resp = advertiseListCpiBidsWithHttpInfo(organizationId, campaignSetId, campaignId);
         return resp.getData();
     }
 
@@ -132,8 +138,8 @@ public class BidsApi {
      * @return ApiResponse&lt;AdvertiseCpiBidsResponseBody&gt;
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      */
-    public ApiResponse<AdvertiseCpiBidsResponseBody> advertiseListCpiBidsWithHttpInfo() throws ApiException {
-        com.squareup.okhttp.Call call = advertiseListCpiBidsValidateBeforeCall(null, null);
+    public ApiResponse<AdvertiseCpiBidsResponseBody> advertiseListCpiBidsWithHttpInfo(Long organizationId, String campaignSetId, String campaignId) throws ApiException {
+        com.squareup.okhttp.Call call = advertiseListCpiBidsValidateBeforeCall(organizationId, campaignSetId, campaignId, null, null);
         Type localVarReturnType = new TypeToken<AdvertiseCpiBidsResponseBody>(){}.getType();
         return apiClient.execute(call, localVarReturnType);
     }
@@ -145,7 +151,7 @@ public class BidsApi {
      * @return The request call
      * @throws ApiException If fail to process the API call, e.g. serializing the request body object
      */
-    public com.squareup.okhttp.Call advertiseListCpiBidsAsync(final ApiCallback<AdvertiseCpiBidsResponseBody> callback) throws ApiException {
+    public com.squareup.okhttp.Call advertiseListCpiBidsAsync(Long organizationId, String campaignSetId, String campaignId, final ApiCallback<AdvertiseCpiBidsResponseBody> callback) throws ApiException {
 
         ProgressResponseBody.ProgressListener progressListener = null;
         ProgressRequestBody.ProgressRequestListener progressRequestListener = null;
@@ -166,7 +172,7 @@ public class BidsApi {
             };
         }
 
-        com.squareup.okhttp.Call call = advertiseListCpiBidsValidateBeforeCall(progressListener, progressRequestListener);
+        com.squareup.okhttp.Call call = advertiseListCpiBidsValidateBeforeCall(organizationId, campaignSetId, campaignId, progressListener, progressRequestListener);
         Type localVarReturnType = new TypeToken<AdvertiseCpiBidsResponseBody>(){}.getType();
         apiClient.executeAsync(call, localVarReturnType, callback);
         return call;

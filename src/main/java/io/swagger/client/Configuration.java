@@ -14,25 +14,46 @@ package io.swagger.client;
 
 @javax.annotation.Generated(value = "io.swagger.codegen.v3.generators.java.JavaClientCodegen", date = "2022-08-09T13:51:56.064Z[GMT]")
 public class Configuration {
-    private static ApiClient defaultApiClient = new ApiClient("OTgyZWIzYTMtYTIwNC00MzlkLTk1MWYtODgxOGI3NTAwZjEyOnFJR0RRcldldll1aldyemtHbS1fX0pKU2xNX2ZXZ1lMCg");
+    private static ApiClient managementApiClient = new ApiClient("https://services.api.unity.com", "Basic", PropertiesStorage.getInstance().getProperty("unity.key"));
+    private static ApiClient statisticsApiClient = new ApiClient("https://stats.unityads.unity3d.com","Bearer", PropertiesStorage.getInstance().getProperty("unity.statistics.key"));
 
     /**
-     * Get the default API client, which would be used when creating API
+     * Get the Unity Advertising Management API client, which would be used when creating API
      * instances without providing an API client.
      *
      * @return Default API client
      */
-    public static ApiClient getDefaultApiClient() {
-        return defaultApiClient;
+    public static ApiClient getManagementApiClient() {
+        return managementApiClient;
     }
 
     /**
-     * Set the default API client, which would be used when creating API
+     * Set the Unity Advertising Management API client, which would be used when creating API
      * instances without providing an API client.
      *
      * @param apiClient API client
      */
-    public static void setDefaultApiClient(ApiClient apiClient) {
-        defaultApiClient = apiClient;
+    public static void setManagementApiClient(ApiClient apiClient) {
+        managementApiClient = apiClient;
+    }
+
+        /**
+     * Get the Unity Advertising Management API client, which would be used when creating API
+     * instances without providing an API client.
+     *
+     * @return Default API client
+     */
+    public static ApiClient getStatisticsApiClient() {
+        return statisticsApiClient;
+    }
+
+    /**
+     * Set the Unity Advertising Management API client, which would be used when creating API
+     * instances without providing an API client.
+     *
+     * @param apiClient API client
+     */
+    public static void setStatisticsApiClient(ApiClient apiClient) {
+        statisticsApiClient = apiClient;
     }
 }

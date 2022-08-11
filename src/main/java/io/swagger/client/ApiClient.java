@@ -53,7 +53,7 @@ import io.swagger.client.auth.OAuth;
 
 public class ApiClient {
 
-    private String basePath = "https://services.api.unity.com";
+    private String basePath;
     private boolean debugging = false;
     private Map<String, String> defaultHeaderMap = new HashMap<String, String>();
     private String tempFolderPath = null;
@@ -77,7 +77,9 @@ public class ApiClient {
     /*
      * Constructor for ApiClient
      */
-    public ApiClient(String authTok) {
+    public ApiClient(String basePath, String authPrefix, String authTok) {
+        this.basePath = basePath;
+
         httpClient = new OkHttpClient();
 
 
@@ -91,10 +93,10 @@ public class ApiClient {
 
         // Setup authentications (key: authentication name, value: authentication).
         authentications = new HashMap<String, Authentication>();
-        ApiKeyAuth basic = new ApiKeyAuth("header","Authorization");
-        basic.setApiKey(authTok);
-        basic.setApiKeyPrefix("Basic");
-        authentications.put("Authentication", basic);
+        ApiKeyAuth apiKey = new ApiKeyAuth("header","Authorization");
+        apiKey.setApiKey(authTok);
+        apiKey.setApiKeyPrefix(authPrefix);
+        authentications.put("Authentication", apiKey);
         // Prevent the authentications from being modified.
         authentications = Collections.unmodifiableMap(authentications);
     }

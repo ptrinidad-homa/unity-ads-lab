@@ -115,7 +115,7 @@ public class CampaignsApiTest extends SetupApiTests {
      * @throws Exception
      *          if the Api call fails
      */
-
+    @Ignore
     @Test
     public void advertiseGetTargetingTest() throws Exception {
         AdvertiseGetTargetingResponseBody response = api.advertiseGetTargeting();
@@ -130,7 +130,7 @@ public class CampaignsApiTest extends SetupApiTests {
      * @throws Exception
      *          if the Api call fails
      */
-    
+    @Ignore
     @Test
     public void advertiseListAssignedCreativePacksTest() throws Exception {
         AdvertiseAssignedCreativePacksResponseBody response = api.advertiseListAssignedCreativePacks();

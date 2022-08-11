@@ -39,7 +39,7 @@ public class AppsApi {
     private ApiClient apiClient;
 
     public AppsApi() {
-        this(Configuration.getDefaultApiClient());
+        this(Configuration.getManagementApiClient());
     }
 
     public AppsApi(ApiClient apiClient) {

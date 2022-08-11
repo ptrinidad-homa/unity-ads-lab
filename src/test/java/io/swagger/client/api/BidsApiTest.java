@@ -21,6 +21,7 @@ import io.swagger.client.toRefactor.AdvertiseRoasBidsResponseBody;
 import io.swagger.client.toRefactor.AdvertiseRoasInfoResponseBody;
 import io.swagger.client.toRefactor.AdvertiseSourceBidsResponseBody;
 
+import org.junit.Assert;
 import org.junit.Ignore;
 
 
@@ -33,8 +34,7 @@ import java.util.Map;
 /**
  * API tests for BidsApi
  */
-@Ignore
-public class BidsApiTest {
+public class BidsApiTest extends SetupApiTests {
 
     private final BidsApi api = new BidsApi();
 
@@ -48,9 +48,9 @@ public class BidsApiTest {
      */
     @Test
     public void advertiseListCpiBidsTest() throws Exception {
-        AdvertiseCpiBidsResponseBody response = api.advertiseListCpiBids();
-
-        // TODO: test validations
+        AdvertiseCpiBidsResponseBody response = api.advertiseListCpiBids(this.organizationId, this.campaignSetId, "62ea97bd377eee6b8a885b4e");
+        System.out.println(response);
+        Assert.assertTrue(response.getTotal() > 0);
     }
     /**
      * List Retention Bids
@@ -60,6 +60,7 @@ public class BidsApiTest {
      * @throws Exception
      *          if the Api call fails
      */
+    @Ignore
     @Test
     public void advertiseListRetentionBidsTest() throws Exception {
         AdvertiseRetentionBidsResponseBody response = api.advertiseListRetentionBids();
@@ -74,6 +75,7 @@ public class BidsApiTest {
      * @throws Exception
      *          if the Api call fails
      */
+    @Ignore
     @Test
     public void advertiseListRetentionInfoTest() throws Exception {
         AdvertiseRetentionInfoResponseBody response = api.advertiseListRetentionInfo();
@@ -88,6 +90,7 @@ public class BidsApiTest {
      * @throws Exception
      *          if the Api call fails
      */
+    @Ignore
     @Test
     public void advertiseListRoasBidsTest() throws Exception {
         AdvertiseRoasBidsResponseBody response = api.advertiseListRoasBids();
@@ -102,6 +105,7 @@ public class BidsApiTest {
      * @throws Exception
      *          if the Api call fails
      */
+    @Ignore
     @Test
     public void advertiseListRoasInfoTest() throws Exception {
         AdvertiseRoasInfoResponseBody response = api.advertiseListRoasInfo();
@@ -116,6 +120,7 @@ public class BidsApiTest {
      * @throws Exception
      *          if the Api call fails
      */
+    @Ignore
     @Test
     public void advertiseListSourceBidsTest() throws Exception {
         AdvertiseSourceBidsResponseBody response = api.advertiseListSourceBids();
@@ -130,6 +135,7 @@ public class BidsApiTest {
      * @throws Exception
      *          if the Api call fails
      */
+    @Ignore
     @Test
     public void advertiseReplaceCpiBidsTest() throws Exception {
         List<Object> body = null;
@@ -145,6 +151,7 @@ public class BidsApiTest {
      * @throws Exception
      *          if the Api call fails
      */
+    @Ignore
     @Test
     public void advertiseReplaceRetentionBidsTest() throws Exception {
         List<Object> body = null;
@@ -160,6 +167,7 @@ public class BidsApiTest {
      * @throws Exception
      *          if the Api call fails
      */
+    @Ignore
     @Test
     public void advertiseReplaceRoasBidsTest() throws Exception {
         List<Object> body = null;
@@ -175,6 +183,7 @@ public class BidsApiTest {
      * @throws Exception
      *          if the Api call fails
      */
+    @Ignore
     @Test
     public void advertiseReplaceSourceBidsTest() throws Exception {
         List<Object> body = null;

@@ -41,7 +41,7 @@ public class BudgetsApi {
     private ApiClient apiClient;
 
     public BudgetsApi() {
-        this(Configuration.getDefaultApiClient());
+        this(Configuration.getManagementApiClient());
     }
 
     public BudgetsApi(ApiClient apiClient) {

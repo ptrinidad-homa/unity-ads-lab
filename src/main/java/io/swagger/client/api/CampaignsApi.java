@@ -46,7 +46,7 @@ public class CampaignsApi {
     private ApiClient apiClient;
 
     public CampaignsApi() {
-        this(Configuration.getDefaultApiClient());
+        this(Configuration.getManagementApiClient());
     }
 
     public CampaignsApi(ApiClient apiClient) {

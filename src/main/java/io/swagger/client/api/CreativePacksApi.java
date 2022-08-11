@@ -37,7 +37,7 @@ public class CreativePacksApi {
     private ApiClient apiClient;
 
     public CreativePacksApi() {
-        this(Configuration.getDefaultApiClient());
+        this(Configuration.getManagementApiClient());
     }
 
     public CreativePacksApi(ApiClient apiClient) {

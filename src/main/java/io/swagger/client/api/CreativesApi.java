@@ -36,7 +36,7 @@ public class CreativesApi {
     private ApiClient apiClient;
 
     public CreativesApi() {
-        this(Configuration.getDefaultApiClient());
+        this(Configuration.getManagementApiClient());
     }
 
     public CreativesApi(ApiClient apiClient) {
