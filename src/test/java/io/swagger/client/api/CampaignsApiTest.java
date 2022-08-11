@@ -18,7 +18,6 @@ import io.swagger.client.model.AnAdvertiseCampaign;
 import io.swagger.client.toRefactor.AdvertiseAssignCreativePackRequestBody;
 import io.swagger.client.toRefactor.AdvertiseAssignedCreativePack;
 import io.swagger.client.toRefactor.AdvertiseAssignedCreativePacksResponseBody;
-import io.swagger.client.toRefactor.AdvertiseCampaignResponseBody;
 import io.swagger.client.toRefactor.AdvertiseCampaignsResponseBody;
 import io.swagger.client.toRefactor.AdvertiseCreateCampaignRequestBody;
 import io.swagger.client.toRefactor.AdvertiseCreatedCampaignResponseBody;
@@ -30,13 +29,6 @@ import io.swagger.client.toRefactor.AdvertiseUpdatedCampaignResponseBody;
 
 import org.junit.Assert;
 import org.junit.Ignore;
-
-
-import java.util.ArrayList;
-import java.util.HashMap;
-import java.util.List;
-import java.util.Map;
-
 
 /**
  * API tests for CampaignsApi

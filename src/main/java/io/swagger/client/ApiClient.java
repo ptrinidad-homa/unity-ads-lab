@@ -500,9 +500,18 @@ public class ApiClient {
             //Serialize to json string and remove the " enclosing characters
             String jsonStr = json.serialize(param);
             return jsonStr.substring(1, jsonStr.length() - 1);
-        } else if (param instanceof Collection) {
+        } else if (param instanceof Collection ) {
             StringBuilder b = new StringBuilder();
             for (Object o : (Collection)param) {
+                if (b.length() > 0) {
+                    b.append(",");
+                }
+                b.append(String.valueOf(o));
+            }
+            return b.toString();
+        } else if (param.getClass().isArray() ) {
+            StringBuilder b = new StringBuilder();
+            for (Object o : (Object[])param) {
                 if (b.length() > 0) {
                     b.append(",");
                 }

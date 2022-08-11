@@ -10,7 +10,7 @@
  * Do not edit the class manually.
  */
 
-package io.swagger.client.model;
+package io.swagger.client.model.enums;
 
 import java.io.IOException;
 import com.google.gson.TypeAdapter;

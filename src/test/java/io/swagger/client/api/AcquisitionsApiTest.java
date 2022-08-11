@@ -16,8 +16,14 @@ import org.junit.Assert;
 import org.junit.Test;
 import org.threeten.bp.OffsetDateTime;
 
+import io.swagger.client.model.enums.Platform;
+import io.swagger.client.model.enums.StatsAdTypes;
+import io.swagger.client.model.enums.StatsField;
+import io.swagger.client.model.enums.StatsReachExtension;
+import io.swagger.client.model.enums.StatsSplitBy;
+import io.swagger.client.model.enums.AdvertiseCountry;
+import io.swagger.client.model.enums.AdvertiseStore;
 import io.swagger.client.model.statistics.StatsScale;
-
 
 /**
  * API tests for AcquisitionsApi
@@ -29,32 +35,69 @@ public class AcquisitionsApiTest extends SetupApiTests {
     /**
      * Acquisitions Report
      *
-     * This endpoint returns Acquisitions reports in CSV format that are under the given organizaion. 
+     * This endpoint returns Acquisitions reports in CSV format that are under the
+     * given organizaion.
      *
      * @throws Exception
-     *          if the Api call fails
+     *                   if the Api call fails
      */
     @Test
     public void statsAcquisitionTest() throws Exception {
         String organizationId = this.statisticsOrganizationId;
         OffsetDateTime start = OffsetDateTime.parse("2022-08-01T00:00:00.000Z");
-        OffsetDateTime end = OffsetDateTime.parse("2022-08-02T00:00:00.000Z");;
-        StatsScale scale = null;
-        String splitBy = null;
-        String fields = null;
-        String campaignSets = null;
-        String campaigns = null;
-        String targets = null;
-        String adTypes = null;
-        String countries = null;
-        String stores = null;
-        String platforms = null;
-        String osVersions = null;
-        String creativePacks = null;
-        String sourceAppIds = null;
-        String reachExtension = null;
-        String skadConversionValues = null;
-        String response = api.statsAcquisition(organizationId, start, end, scale, splitBy, fields, campaignSets, campaigns, targets, adTypes, countries, stores, platforms, osVersions, creativePacks, sourceAppIds, reachExtension, skadConversionValues);
+        OffsetDateTime end = OffsetDateTime.parse("2022-08-02T00:00:00.000Z");
+        ;
+        StatsScale scale = StatsScale.ALL;
+        StatsSplitBy[] splitBy = new StatsSplitBy[] { StatsSplitBy.CAMPAIGNSET, StatsSplitBy.COUNTRY,
+                StatsSplitBy.PLATFORM };
+        StatsField[] fields = new StatsField[] { StatsField.TIMESTAMP, StatsField.CAMPAIGNSET, StatsField.COUNTRY,
+                StatsField.CLICKS, StatsField.INSTALLS, StatsField.PLATFORM, StatsField.SPEND, StatsField.CPI };
+        String[] campaignSets = null;
+        String[] campaigns = null;
+        String[] targets = null;
+        StatsAdTypes[] adTypes = new StatsAdTypes[] { StatsAdTypes.PLAYABLE };
+        AdvertiseCountry[] countries = null;
+        AdvertiseStore[] stores = new AdvertiseStore[] { AdvertiseStore.APPLE };
+        Platform[] platforms = new Platform[] { Platform.IOS };
+        String[] osVersions = null;
+        String[] creativePacks = null;
+        String[] sourceAppIds = null;
+        StatsReachExtension[] reachExtension = null;
+        Integer[] skadConversionValues = new Integer[] { 0, 15 };
+        String response = api.statsAcquisition(organizationId, start, end, scale, splitBy, fields, campaignSets,
+                campaigns, targets, adTypes, countries, stores, platforms, osVersions, creativePacks, sourceAppIds,
+                reachExtension, skadConversionValues);
+        System.out.println(response);
+        Assert.assertTrue(response.length() > 0);
+    }
+
+    @Test
+    public void statsAcquisitionSKAdTest() throws Exception {
+        String organizationId = this.statisticsOrganizationId;
+        OffsetDateTime start = OffsetDateTime.parse("2022-08-01T00:00:00.000Z");
+        OffsetDateTime end = OffsetDateTime.parse("2022-08-02T00:00:00.000Z");
+        ;
+        StatsScale scale = StatsScale.ALL;
+        StatsSplitBy[] splitBy = new StatsSplitBy[] { StatsSplitBy.CAMPAIGNSET, StatsSplitBy.COUNTRY,
+                StatsSplitBy.PLATFORM };
+        StatsField[] fields = new StatsField[] { StatsField.TIMESTAMP, StatsField.CAMPAIGNSET, StatsField.COUNTRY,
+                StatsField.CLICKS, StatsField.INSTALLS, StatsField.PLATFORM, StatsField.SPEND, StatsField.CPI,
+                StatsField.SKADCONVERSION, StatsField.SKADCPI, StatsField.SKADINSTALLS};
+        String[] campaignSets = null;
+        String[] campaigns = null;
+        String[] targets = null;
+        StatsAdTypes[] adTypes = null;
+        AdvertiseCountry[] countries = new AdvertiseCountry[]{AdvertiseCountry.US};
+        AdvertiseStore[] stores = new AdvertiseStore[] { AdvertiseStore.APPLE };
+        Platform[] platforms = new Platform[] { Platform.IOS };
+        String[] osVersions = null;
+        String[] creativePacks = null;
+        String[] sourceAppIds = null;
+        StatsReachExtension[] reachExtension = null;
+        Integer[] skadConversionValues = new Integer[] { 0 };
+        String response = api.statsAcquisition(organizationId, start, end, scale, splitBy, fields, campaignSets,
+                campaigns, targets, adTypes, countries, stores, platforms, osVersions, creativePacks, sourceAppIds,
+                reachExtension, skadConversionValues);
         System.out.println(response);
         Assert.assertTrue(response.length() > 0);
     }

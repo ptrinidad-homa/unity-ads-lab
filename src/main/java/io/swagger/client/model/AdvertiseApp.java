@@ -19,6 +19,7 @@ import java.util.regex.Pattern;
 import com.google.gson.annotations.SerializedName;
 
 import io.swagger.client.TypeUtils;
+import io.swagger.client.model.enums.AdvertiseStore;
 import io.swagger.v3.oas.annotations.media.Schema;
 import org.threeten.bp.OffsetDateTime;
 
